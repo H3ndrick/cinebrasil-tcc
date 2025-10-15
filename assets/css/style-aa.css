@@ -1,0 +1,720 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body, html{
+    height: 100%;
+    background-color: #16181C;
+    color: white;
+}
+
+.hidden, .hidden *{
+    display: none;
+}
+
+.container{
+    height: 100%;
+}
+
+header .conteudo{
+    height: 50px;
+    background: rgb(34,193,195);
+    background: linear-gradient(0deg, rgba(34,193,195,0) 0%, rgba(22,24,28,1) 100%);
+    position: absolute;
+    top: 0;
+    z-index: 100;
+}
+
+nav ul{
+    list-style-type: none;
+}
+
+li a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+li a:hover{
+    color: rgb(218, 218, 218);
+}
+
+.barraPesquisa{
+    border-radius: 15px;
+    border: none;
+}
+
+h3{
+    color: #BABABA;
+}
+
+.filme-capa{
+    height: 180px;
+    width: 144px;
+    background-color: rgb(138, 138, 138);
+    background-position: center;
+    background-size: cover;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.filme-capa1{
+    background-image: url('../img/o-cheiro-do-ralo.png');
+}
+
+.filme-capa2{
+    background-image: url('../img/capa-bingo.png');
+}
+
+.filme-capa3{
+    background-image: url('../img/foto-marighella.jpeg');
+}
+
+.filme-capa:hover{
+    border: 1px solid #5f66f8;
+}
+
+.filmes-similares{
+    display: flex;
+    gap: 10px;
+}
+
+.filme-similar-capa{
+    height: 235px;  
+    width: 175px;
+}
+
+.titulo-filme-exibicao{
+    white-space: nowrap;        /* impede quebra de linha */
+    overflow: hidden;           /* esconde o texto que ultrapassa */
+    text-overflow: ellipsis;    /* adiciona "..." no final */
+    max-width: 175px;
+}
+
+.header-filme{
+    min-height: 460px; 
+    background-image: url('../img/fundoEstomago.avif');
+    background-position: center;
+    background-size: cover;  
+}
+
+:root {
+    --swiper-navigation-color: #353DCB;
+    --swiper-pagination-color: #353DCB;
+}
+
+
+
+.div-media-avaliacoes{
+    height: 373px;
+    width: 284px;
+    margin-top: 100px;
+    background-color: #242832;
+    border-radius: 15px;
+}
+
+.div-icone-analises{
+    border-radius: 5px;
+    width: fit-content;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.btn{
+    width: 300px;
+    background-color: #353DCB;
+    border: 0;
+    transition: 0.3s;
+}
+
+.btn:hover{
+    background-color: #5f66f8;
+}
+
+.btn-2{
+    width: 243px;
+    background-color: #394052;
+    border: 0;
+    transition: 0.3s;
+}
+
+.btn-2:hover{
+    background-color: #6d7792;
+}
+
+.roxo{
+    color: #5f66f8;
+}
+
+.div-form{
+    background-color: #242832;
+}
+
+.analise{
+    border-bottom: 1px solid grey;
+    margin-bottom: 15px;
+}
+
+.foto-perfil{
+    width: 50px;
+    height: 50px;
+}
+
+.like{
+    cursor: pointer;
+}
+
+.estrela path, .meia-estrela path{
+    fill:#5f66f8;
+}
+
+/*lista*/
+
+.lista {
+    position: relative;
+    width: 260px;  /* Ajuste conforme a quantidade e tamanho dos cards */
+    height: 175px;
+}
+
+.container-lista{
+    width: fit-content;
+}
+
+/* Cartões empilhados horizontalmente com deslocamento */
+.card-lista {
+    position: absolute;
+    top: 0;
+    width: 130px;
+    height: 175px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Deslocamento horizontal para sobreposição */
+.card-lista:nth-child(1) {
+    left: 0;
+    z-index: 4;
+}
+.card-lista:nth-child(2) {
+    left: 40px;
+    z-index: 3;
+}
+.card-lista:nth-child(3) {
+    left: 80px;
+    z-index: 2;
+}
+.card-lista:nth-child(4) {
+    left: 120px;
+    z-index: 1;
+}
+
+/* Opcional: efeito hover para destacar o card */
+.card-lista:hover {
+    transform: scale(1.05) translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+    z-index: 10;
+}
+
+.div-capa-lista, .div-capa-filme{
+    height: 330px;
+    width: 265px;
+    border-radius: 15px;
+    left: 133px;
+    top: -85px;
+}
+
+.div-capa-filme-lista {
+    height: 180px;
+    width: 144px;
+    border-radius: 15px;
+    background-color: black;
+    transition: 0.3s;
+}
+
+.capa-filme-adicionar-lista{
+    transition: 0.3s;
+}
+
+.div-capa-filme-lista:hover, .capa-filme-adicionar-lista:hover, .filme-selecionado{
+    border: 2px solid #353DCB;
+}
+
+.capa-filme-lista{
+    transition: 0.3s;
+}
+.capa-filme-lista:hover, .capa-filme-adicionar-lista:hover, .filme-selecionado{
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.banner-lista, .banner-comunidade, .banner-filme{
+    height: 360px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.banner-lista{
+    background-image: linear-gradient(to bottom, transparent 0%, #16181C 100%), url('../img/banner-lista.jpg');
+}
+
+.banner-comunidade{
+    
+    background-image: linear-gradient(to bottom, transparent 0%, #16181C 100%), url('../img/banner-comunidade.png');
+}
+
+.banner-filme{
+    background-image: linear-gradient(to bottom, transparent 0%, #16181C 100%), url('../img/fundoEstomago.avif');
+}
+
+.div-capa-comunidade{
+    height: 275px;
+    width: 264px;
+    border-radius: 10px;
+    left: 133px;
+    top: -85px;
+}
+
+.post{
+    border-radius: 15px;
+    background-color: #242832;
+    transition: 0.3s;
+}
+
+.post:hover{
+    background-color: #383c47;
+    cursor: pointer;
+}
+
+.div-info-comunidade{
+    height: 270px;
+    width: 310px;
+    background-color: #242832;
+    border-radius: 15px;
+}
+
+.div-comunidades-perfil{
+    height: 400px;
+    width: 310px;
+    background-color: #242832;
+    border-radius: 15px;
+}
+
+.banner-perfil{
+    height: 360px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    background-image: linear-gradient(to bottom, transparent 0%, #16181C 100%), url('../img/comunidades/banner-perfil.png');
+}
+
+.div-foto-perfil{
+    height: 275px;
+    width: 264px;
+    border-radius: 50%;
+    left: 180px;
+    top: -85px;
+}
+
+
+.share-container {
+    position: relative;
+  }
+
+  .share-button {
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: transparent;
+  }
+
+
+  .share-options {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 100;
+    width: 150px;
+  }
+
+  .share-options a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    border-bottom: 1px solid #eaeaea;
+  }
+
+  .share-options a:last-child {
+    border-bottom: none;
+  }
+
+  .visible {
+    display: block;
+  }
+
+  .categoria-perfil {
+    position: relative;
+    text-decoration: none;
+    color: #d0d0d0;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .categoria-perfil::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #6c63ff;
+    transition: width 0.3s ease;
+  }
+
+  
+
+  .categoria-perfil:hover::after {
+    width: 100%;
+  }
+
+  .div-postagem-capa-filme{
+    width: 500px;
+    height: 254px;
+    overflow: hidden;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.postagem-card{
+    position: relative;
+    width: 700px;
+    min-height: 102px;
+    border-radius: 10px;
+    overflow: hidden;
+    color: white;
+    background:#242832;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+  }
+
+  .postagem-card2{
+    position: relative;
+    width: 700px;
+    height: auto;
+    border-radius: 10px;
+    overflow: hidden;
+    color: white;
+    background:#242832;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+  }
+
+  .comunidade-perfil{
+    position: relative;
+    width: 250px;
+    height: 150px;
+    border-radius: 10px;
+    overflow: hidden;
+    color: white;
+    background:#0a0b0e;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+  }
+
+  .div-img-comunidade-perfil{
+    width: 80px;
+    height: 120px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-img-carousel{
+    width: 80px;
+    height: 120px;
+    overflow: hidden;
+}
+
+.div-img-comunidade{
+    width: 185px;
+    height: 254px;
+    overflow: hidden;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.comunidade-card{
+    position: relative;
+    width: 835px;
+    min-height: 312px;
+    border-radius: 10px;
+    overflow: hidden;
+    color: white;
+    background:#242832;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+}
+
+.div-banner-comunidade{
+    width: 595px; 
+    height: 180px;
+    flex: 1; position:absolute; left: 175px;
+}
+
+.div-banner-comunidade1{
+    width: 595px; 
+    height: 180px;
+    background: linear-gradient(to bottom,rgba(0, 0, 0, 0.3) 0%, #242832 100%), url(../img/comunidades/bannerterror.png);
+    flex: 1; position:absolute; left: 175px;
+}
+
+.div-banner-comunidade2{
+    width: 595px; 
+    height: 180px;
+    background: linear-gradient(to bottom,rgba(0, 0, 0, 0.3) 0%, #242832 100%), url(../img/comunidades/bannerpiores.png);
+    flex: 1; position:absolute; left: 175px;
+    
+}
+
+.div-banner-comunidade3{
+    width: 595px; 
+    height: 180px;
+    background: linear-gradient(to bottom,rgba(0, 0, 0, 0.3) 0%, #242832 100%), url(../img/comunidades/bannersigma.jpg);
+    background-size: cover;
+    flex: 1; position:absolute; left: 175px;
+}
+
+.div-banner-comunidade4{
+    width: 595px; 
+    height: 180px;
+    flex: 1; position:absolute; left: 175px;
+}
+
+.foto-comunidade-perfil{
+    height: 150px;
+}
+
+.foto-comunidade{
+    height: 254px;
+}
+
+.div-banner-comunidade-perfil{
+    width: 120px; 
+    height: 120px;
+    background: linear-gradient(to bottom,rgba(0, 0, 0, 0.3) 0%, #000000 100%), url(../img/comunidades/bannerterror.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex: 1; position:absolute; left:90px;
+}
+
+.div-banner-comunidade-perfil2{
+    width: 120px; 
+    height: 120px;
+    background: linear-gradient(to bottom,rgba(0, 0, 0, 0.3) 0%, #000000 100%), url(../img/comunidades/bannersigma.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex: 1; position:absolute; left:90px;
+}
+
+
+
+
+/* lincon */
+.qualquer-coisa{
+    height: 500px;
+    background: linear-gradient(to bottom,rgba(0, 0, 0, 0.3) 0%, #16181C 100%), url('../img/auto_da_compadecida.webp') no-repeat center/cover;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.container-coments{
+    width: 351px;
+    height: 272px;
+    background-color:  #242832;
+    border-radius: 15px
+
+}
+
+.img-coments{
+    width: 143px;
+    height: 223px;
+    border-radius: 5px; 
+}
+
+.icon-profile-coments{
+    width: 26px;
+    height: 27px;
+    border-radius: 50%;
+}
+
+.container-filme-alta{
+    position: relative;
+    width: 175px;
+    height: 235px;
+    overflow: hidden;
+}
+
+.img-filme-alta{
+    border-radius: 15px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.text-filme-alta{
+    position: absolute;
+    top: 65%;
+    padding: 10px;
+}
+
+.container-funcional{
+    background-color: #242832;
+    border-radius: 15px;
+}
+
+.img-container-funcional{
+    width: 154px;
+    height: 188px;
+}
+
+.text-container-funcional{
+    width: 718px;
+}
+
+.icone-comunidade{
+    filter: invert();
+}
+
+.div-up-vote{
+    background-color: #2e313a;
+}
+
+.btnUpVoteFeito{
+    background-color: #353DCB;
+}
+
+.btnDownFeito{
+    background-color: rgb(218, 42, 42);
+}
+
+.child-div-up-vote:hover{
+    background-color: #3c404b;
+    transition: 0.2s;
+}
+
+.btnUpVoteFeito:hover{
+    background-color: #272eb6;
+}
+
+.btnDownFeito:hover{
+    background-color: rgb(211, 30, 30);
+    transition: 0.2s;
+}
+
+.scrollable-div {
+  height: 350px;        /* altura fixa para ativar o scroll */
+  overflow-y: auto;     /* mostra a barra de rolagem vertical só quando necessário */
+  overflow-x: hidden;   /* esconde a barra de rolagem horizontal */
+  border: 1px solid #424a5e; /* opcional, só para visualização */
+  background-color: #16181C;
+  padding: 10px;
+}
+
+.navbar-nav .nav-link {
+    font-family: 'Arial', sans-serif;
+    color: #f8f9fa; 
+    font-weight: 600; 
+    transition: color 0.3s ease;
+    
+  }
+  
+  .navbar-nav .nav-link:hover,
+  .navbar-nav .nav-link:focus {
+    color: #c3c3ff;
+    text-decoration: none;
+    text-shadow: #000 0.9px 0.9px 3px;
+  }
+
+  .nav-link.active {
+    color: #8484e3 !important;
+    text-shadow: #000 1.2px 1.2px 3px;
+
+  }
+  
+  .dropdown-menu {
+    background-color: #242832 !important; /* Cor escura */
+    border: none; /* remove a borda se quiser */
+  }
+
+  @media (max-width: 991.98px) {
+    #navbarResponsive {
+      position: absolute;
+      top: 100%;
+      right: 1rem;
+      left: auto;
+      background: #242832 !important;
+      padding: 0.5rem 1rem !important;
+      border-radius: 0.25rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      min-width: 200px;
+      z-index: 1050;
+    }
+    #navbarResponsive.show {
+      display: block !important;
+    }
+    #navbarResponsive .nav-link {
+        color: white !important;
+        transition: color 0.3s ease;
+      }
+      
+      #navbarResponsive .nav-link:hover,
+      #navbarResponsive .nav-link:focus {
+        color: #aeaefe;
+        text-shadow: #000 1px 1px 3px;
+      }
+    #navbarResponsive ul.navbar-nav {
+      flex-direction: column;
+    }
+    #navbarResponsive ul.navbar-nav li {
+      margin-bottom: 0.5rem;
+    }
+    #navbarResponsive ul.navbar-nav li:last-child {
+      margin-bottom: 0;
+    }
+    #navbarResponsive form {
+      margin-top: 1rem;
+    }
+  }
