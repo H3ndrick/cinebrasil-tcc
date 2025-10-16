@@ -10,6 +10,26 @@
             
             <div class="d-flex align-items-center justify-content-center gap-3 flex-wrap">
                 <?php 
+                    if (!(!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))) {
+                ?>
+                        <div class="container-lista">
+                            <div class="lista" id="criarLista">
+                                <div class="card-lista d-flex align-items-center justify-content-center" style="background-color:rgb(130, 82, 207);">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                                    </svg>
+                                </div>
+                                <div class="card-lista" style="background-color:rgb(162, 111, 229);"></div>
+                                <div class="card-lista" style="background-color:rgb(188, 156, 206);"></div>
+                                <div class="card-lista" style="background-color:rgb(195, 175, 212);"></div>
+                            </div>
+                            <p class=" w-100">Criar lista</p>
+                        </div>
+                <?php 
+                    } 
+                ?>
+
+                <?php 
                     $listas = getAllListas($conn);
                     if(sizeof($listas) == 0){
                         echo "<h3>Nenhuma lista encontrada</h3>";

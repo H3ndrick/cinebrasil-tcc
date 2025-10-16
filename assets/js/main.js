@@ -1,3 +1,7 @@
+document.getElementById('criarLista').addEventListener('click', () => {
+  window.location = 'criarLista.php'
+});
+
 document.getElementById('avaliacoes-perfil').addEventListener('click', () => {
   let linhaDoTempo = document.getElementById('linha-do-tempo');
   let listas = document.getElementById('minhas-listas');
@@ -44,10 +48,6 @@ document.getElementById('comunidades-perfil').addEventListener('click', () => {
       listas.classList.add('hidden');
     }
   }
-});
-
-document.getElementById('criarLista').addEventListener('click', () => {
-  window.location = 'criarLista.php'
 });
 
 function goToLista(id){
