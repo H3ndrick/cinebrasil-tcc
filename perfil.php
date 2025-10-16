@@ -48,6 +48,10 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
                                     <h3><?= $user["username"]; ?></h3>
                                     <p class="perfil-bio"><?= $user["bio"]; ?></p>
                                 </div>
+
+                                <?php 
+                                    if ($idUser == $idLogado):
+                                ?>
                                 <div class="menu-reticencias">
                                     <button class="share-button" onclick="toggleShareOptions()">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-three-dots" viewBox="0 0 16 16">
@@ -59,6 +63,7 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
                                         <a href="proc/procLogout.php" target="">Sair</a>
                                     </div>
                                 </div>
+                                <?php endif; ?>
 
                                 <div class="seguir-e-seguidores">
                                     <?php if ($idUser != $idLogado): ?>
@@ -185,6 +190,7 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
         <section class="container d-flex flex-column align-items-center gap-4 flex-wrap pt-3 <?= $categoria == 'listas' ? '' : "hidden"; ?>" id="minhas-listas">
             <h2>Listas de <?= $user["username"] ?></h2>
             <div class="d-flex align-items-center gap-4 flex-wrap">
+                <?php if ($idUser == $idLogado): ?>
                 <div class="container-lista">
                     <div class="lista" id="criarLista">
                         <div class="card-lista d-flex align-items-center justify-content-center" style="background-color:rgb(130, 82, 207);">
@@ -198,7 +204,7 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
                     </div>
                     <p class=" w-100">Criar lista</p>
                 </div>
-
+                <?php endif;?>
                 <?php
                 $listas = getListasByIdUsuario($conn, $idUser);
 

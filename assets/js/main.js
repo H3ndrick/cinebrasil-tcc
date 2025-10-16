@@ -1,5 +1,5 @@
-document.getElementById('criarLista').addEventListener('click', () => {
-  window.location = 'criarLista.php'
+document.getElementById('criarLista')?.addEventListener('click', () => {
+    window.location = 'criarLista.php';
 });
 
 document.getElementById('avaliacoes-perfil').addEventListener('click', () => {
