@@ -30,6 +30,7 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
     $isFollowing = isFollowing($conn, $idLogado, $idUser);
     $followersCount = getFollowersCount($conn, $idUser);
     $followingCount = getFollowingCount($conn, $idUser);
+    $usuarioLogado = getUsuarioById($conn, $idLogado);
     ?>
 
     <main class="">
@@ -48,6 +49,10 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
                                     <h3><?= $user["username"]; ?></h3>
                                     <p class="perfil-bio"><?= $user["bio"]; ?></p>
                                 </div>
+
+                                <?php 
+                                    if ($idUser == $idLogado):
+                                ?>
                                 <div class="menu-reticencias">
                                     <button class="share-button" onclick="toggleShareOptions()">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-three-dots" viewBox="0 0 16 16">
@@ -59,6 +64,7 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
                                         <a href="proc/procLogout.php" target="">Sair</a>
                                     </div>
                                 </div>
+                                <?php endif; ?>
 
                                 <div class="seguir-e-seguidores">
                                     <?php if ($idUser != $idLogado): ?>
@@ -68,8 +74,8 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
                                     <?php endif; ?>
 
                                     <div class="perfil-follow-info">
-                                        <span id="followersCount" data-type="followers" title="Ver seguidores"><?= $followersCount ?> seguidores</span> |
-                                        <span id="followingCount" data-type="following" title="Ver seguindo"><?= $followingCount ?> seguindo</span>
+                                        <span id="followersCount" data-type="followers" title="Ver seguidores"><a class="categoria-perfil" id="seguidores-perfil"><?= $followersCount ?> seguidores</a></span> |
+                                        <span id="followingCount" data-type="following" title="Ver seguindo"><a class="categoria-perfil" id="seguindo-perfil"><?= $followingCount ?> seguindo</a></span>
                                     </div>
                                 </div>
                             </div>
@@ -185,6 +191,7 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
         <section class="container d-flex flex-column align-items-center gap-4 flex-wrap pt-3 <?= $categoria == 'listas' ? '' : "hidden"; ?>" id="minhas-listas">
             <h2>Listas de <?= $user["username"] ?></h2>
             <div class="d-flex align-items-center gap-4 flex-wrap">
+                <?php if ($idUser == $idLogado): ?>
                 <div class="container-lista">
                     <div class="lista" id="criarLista">
                         <div class="card-lista d-flex align-items-center justify-content-center" style="background-color:rgb(130, 82, 207);">
@@ -198,7 +205,7 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
                     </div>
                     <p class=" w-100">Criar lista</p>
                 </div>
-
+                <?php endif;?>
                 <?php
                 $listas = getListasByIdUsuario($conn, $idUser);
 
@@ -271,6 +278,106 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
                 ?>
             </div>
         </section>
+        
+        <section class="container d-flex flex-column align-items-center gap-4 flex-wrap <?= $categoria == 'seguidores' ? '' : "hidden"; ?>" id="seguidores">
+            <div class="w-100" id="container-seguidores">
+                <h3 class="text-white text-center mb-4">Seguidores</h3>
+                <?php
+                    $idsUsuariosSeguidores = getFollowersIds($conn, $idUser);
+                    $usuariosSeguidores = [];
+
+                    foreach ($idsUsuariosSeguidores as $i => $idUsuario) {
+                        $usuariosSeguidores[] = getUsuarioById($conn, $idUsuario["id_usuario_seguidor"]);
+                    }
+
+                    if ($usuariosSeguidores != null) {
+                        echo '<div class="row g-3 justify-content-center" id="div-seguidores">';
+                        foreach ($usuariosSeguidores as $i => $usuarioSeguidor) {
+                            echo '
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3" id="card-'.$usuarioSeguidor["id"].'">
+                                    <div class="card bg-dark text-white border-0 shadow-sm h-100 seguindo-card">
+                                        <div class="card-body text-center p-3">
+                                            <div class="mb-3">
+                                                <img src="' . $usuarioSeguidor["foto"] . '" 
+                                                    alt="' . $usuarioSeguidor["username"] . '" 
+                                                    class="rounded-circle seguindo-avatar"
+                                                    style="width: 80px; height: 80px; object-fit: cover;">
+                                            </div>
+                                            <h5 class="card-title mb-2">' . $usuarioSeguidor["username"] . '</h5>
+                                            <a href="perfil.php?id=' . $usuarioSeguidor["id"] . '" 
+                                            class="btn btn-outline-light btn-sm mt-2">
+                                                Ver Perfil
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            ';
+                        }
+                        echo '</div>';
+                    } else {
+                        echo '
+                            <div class="text-center text-white py-5" id="div-nao-tem-seguidores">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-people mb-3 opacity-50" viewBox="0 0 16 16">
+                                    <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+                                </svg>
+                                <h4 class="opacity-75">' . $user["username"] . ' ainda não é seguido por ninguém.</h4>
+                                <p class="opacity-50">Quando alguém seguir este perfil, aparecerá aqui.</p>
+                            </div>
+                        ';
+                    }
+                ?>
+            </div>
+        </section>
+
+        <section class="container d-flex flex-column align-items-center gap-4 flex-wrap <?= $categoria == 'seguindo' ? '' : "hidden"; ?>" id="seguindo">
+            <div class="w-100">
+                <h3 class="text-white text-center mb-4">Seguindo</h3>
+                <?php
+                    $idsUsuariosSeguindo = getFollowingIds($conn, $idUser);
+                    $usuariosSeguindo = [];
+
+                    foreach ($idsUsuariosSeguindo as $i => $idUsuario) {
+                        $usuariosSeguindo[] = getUsuarioById($conn, $idUsuario["id_usuario_seguindo"]);
+                    }
+
+                    if ($usuariosSeguindo != null) {
+                        echo '<div class="row g-3 justify-content-center">';
+                        foreach ($usuariosSeguindo as $i => $usuarioSeguindo) {
+                            echo '
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3"">
+                                    <div class="card bg-dark text-white border-0 shadow-sm h-100 seguindo-card">
+                                        <div class="card-body text-center p-3">
+                                            <div class="mb-3">
+                                                <img src="' . $usuarioSeguindo["foto"] . '" 
+                                                    alt="' . $usuarioSeguindo["username"] . '" 
+                                                    class="rounded-circle seguindo-avatar"
+                                                    style="width: 80px; height: 80px; object-fit: cover;">
+                                            </div>
+                                            <h5 class="card-title mb-2">' . $usuarioSeguindo["username"] . '</h5>
+                                            <a href="perfil.php?id=' . $usuarioSeguindo["id"] . '" 
+                                            class="btn btn-outline-light btn-sm mt-2">
+                                                Ver Perfil
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            ';
+                        }
+                        echo '</div>';
+                    } else {
+                        echo '
+                            <div class="text-center text-white py-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-people mb-3 opacity-50" viewBox="0 0 16 16">
+                                    <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+                                </svg>
+                                <h4 class="opacity-75">' . $user["username"] . ' ainda não segue ninguém.</h4>
+                                <p class="opacity-50">Quando esse perfil seguir alguém, aparecerá aqui.</p>
+                            </div>
+                        ';
+                    }
+                ?>
+            </div>
+        </section>
     </main>
 
     <?php
@@ -317,13 +424,75 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
                         button.textContent = 'Deixar de seguir';
                         button.classList.remove('btn-primary');
                         button.classList.add('btn-success');
+
+                        const existeDivSeguidores = document.querySelector('#container-seguidores #div-seguidores') !== null;
+
+                        if (existeDivSeguidores) {
+                            console.log('A div div-seguidores existe dentro de container-seguidores');
+                            document.getElementById('div-seguidores').innerHTML += `
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3" id="card-<?= $usuarioLogado["id"] ?>">
+                                    <div class="card bg-dark text-white border-0 shadow-sm h-100 seguindo-card">
+                                        <div class="card-body text-center p-3">
+                                            <div class="mb-3">
+                                                <img src="<?= $usuarioLogado["foto"] ?>" alt="<?= $usuarioLogado["username"] ?>'" class="rounded-circle seguindo-avatar" style="width: 80px; height: 80px; object-fit: cover;">
+                                            </div>
+                                            <h5 class="card-title mb-2"><?= $usuarioLogado["username"] ?></h5>
+                                            <a href="perfil.php?id=<?=$usuarioLogado["id"]?>" class="btn btn-outline-light btn-sm mt-2">
+                                                Ver Perfil
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        } else {
+                            console.log('A div div-seguidores NÃO existe dentro de container-seguidores');
+                            document.getElementById('container-seguidores').removeChild(document.getElementById('div-nao-tem-seguidores'));
+                            document.getElementById('container-seguidores').innerHTML = `
+                                <div class="row g-3 justify-content-center" id="div-seguidores">
+                                    <div class="col-12 col-sm-6 col-md-4 col-lg-3" id="card-<?= $usuarioLogado["id"] ?>">
+                                        <div class="card bg-dark text-white border-0 shadow-sm h-100 seguindo-card">
+                                            <div class="card-body text-center p-3">
+                                                <div class="mb-3">
+                                                    <img src="<?= $usuarioLogado["foto"] ?>" 
+                                                        alt="<?= $usuarioLogado["username"] ?>'" 
+                                                        class="rounded-circle seguindo-avatar"
+                                                        style="width: 80px; height: 80px; object-fit: cover;">
+                                                </div>
+                                                <h5 class="card-title mb-2"><?= $usuarioLogado["username"] ?></h5>
+                                                <a href="perfil.php?id=<?= $usuarioLogado["id"] ?>" class="btn btn-outline-light btn-sm mt-2">
+                                                    Ver Perfil
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        }
+
                     } else {
+                        let divSeguidores = document.getElementById('div-seguidores')
+                        let containerSeguidores = document.getElementById('container-seguidores');
                         button.textContent = 'Seguir';
                         button.classList.add('btn-primary');
                         button.classList.remove('btn-success');
+                        divSeguidores.removeChild(document.getElementById('card-<?= $usuarioLogado["id"] ?>'));
+
+                        if(divSeguidores.children.length == 0){
+                            containerSeguidores.removeChild(divSeguidores);
+                            containerSeguidores.innerHTML = `
+                                <div class="text-center text-white py-5" id="div-nao-tem-seguidores">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-people mb-3 opacity-50" viewBox="0 0 16 16">
+                                        <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+                                    </svg>
+                                    <h4 class="opacity-75"><?= $user["username"] ?> ainda não é seguido por ninguém.</h4>
+                                    <p class="opacity-50">Quando alguém seguir este perfil, aparecerá aqui.</p>
+                                </div>
+                            `;
+
+                        }
                     }
-                    document.getElementById('followersCount').textContent = data.followers + ' seguidores';
-                    document.getElementById('followingCount').textContent = data.following + ' seguindo';
+                    document.getElementById('seguidores-perfil').textContent = data.followers + ' seguidores';
+                    document.getElementById('seguindo-perfil').textContent = data.following + ' seguindo';
                 } else {
                     alert('Erro: ' + data.message);
                 }
@@ -332,7 +501,38 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
     });
 </script>
 
+<style>
+.seguindo-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(10px);
+}
 
+.seguindo-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.seguindo-avatar {
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    transition: border-color 0.2s ease;
+}
+
+.seguindo-card:hover .seguindo-avatar {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-outline-light {
+    border-width: 1px;
+    transition: all 0.2s ease;
+}
+
+.btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+</style>
 
 </body>
 
