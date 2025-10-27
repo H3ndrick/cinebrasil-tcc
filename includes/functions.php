@@ -1359,6 +1359,43 @@
         return $result['total'] ?? 0;
     }
 
+    function getFollowingIds($conn, $idUsuario) {
+        $command = "SELECT id_usuario_seguindo FROM seguidores WHERE id_usuario_seguidor = ?";
+
+        $stmt = mysqli_prepare($conn, $command);
+        mysqli_stmt_bind_param($stmt, "i", $idUsuario);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+
+        $idsUsuarios = array();
+
+        if($result){
+            while($usuarioId = mysqli_fetch_assoc($result)){
+                array_push($idsUsuarios, $usuarioId);
+            }
+        }
+
+        return $idsUsuarios;
+    }
+
+    function getFollowersIds($conn, $idUsuario){
+        $command = "SELECT id_usuario_seguidor FROM seguidores WHERE id_usuario_seguindo = ?";
+
+        $stmt = mysqli_prepare($conn, $command);
+        mysqli_stmt_bind_param($stmt, "i", $idUsuario);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+
+        $idsUsuarios = array();
+
+        if($result){
+            while($usuarioId = mysqli_fetch_assoc($result)){
+                array_push($idsUsuarios, $usuarioId);
+            }
+        }
+
+        return $idsUsuarios;
+    }
 
     //abraham linconler
     function updateComunidade($conn, $idComunidade, $titulo, $descricao, $capa, $banner){
