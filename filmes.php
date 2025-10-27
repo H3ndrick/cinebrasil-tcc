@@ -12,7 +12,7 @@ include "includes/header.php";
 <main class="d-flex align-items-center justify-content-center">
     <div class="container-fluid pt-4 mt-4 container-grid-posters">
         <h1>Filmes</h1>
-        <div id="filmes-lista" class="d-flex align-items-center gap-3 flex-wrap">
+        <div id="filmes-lista" class="d-flex align-items-center justify-content-center gap-3 flex-wrap">
             
         </div>
         

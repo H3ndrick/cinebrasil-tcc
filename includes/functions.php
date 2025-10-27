@@ -1,9 +1,9 @@
 <?php 
     function connect(){
-        $server = "sql100.infinityfree.com";
-        $user = "if0_40105604";
-        $password = "w6GAHypqNy";
-        $database = "if0_40105604_cinebrasil";
+        $server = "localhost";
+        $user = "root";
+        $password = "";
+        $database = "cinema";
         $port = 3306;
 
         $conn = mysqli_connect($server, $user, $password, $database, $port);
@@ -13,7 +13,7 @@
         }
 
         mysqli_set_charset($conn,"utf8");
-        
+
         return $conn;
     }
 

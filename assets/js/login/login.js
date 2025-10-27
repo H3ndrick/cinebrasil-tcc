@@ -57,6 +57,8 @@ function login() {
     let form = document.getElementById('loginForm');
     let formData = new FormData(form);
 
+console.log(`${baseUrl}login/wsLogin.php`);
+
     fetch(`${baseUrl}login/wsLogin.php`, {
         method: 'POST',
         body: formData

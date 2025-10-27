@@ -58,12 +58,14 @@
                         <hr>
     
                         <div class="d-flex gap-2 align-items-center border border-secondary text-secondary div-icone-analises">
+                            <a href="#container-avaliacoes-filme" style="color: inherit; text-decoration: none;" class="rolar-baixo">
                             <div class="d-flex align-items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-text-left" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
                                 </svg>
                             </div>
                             <span id="qntAnalises"> analises</span>
+                            </a>
                         </div>
     
                         <div class="p-2 d-flex flex-column div-media-avaliacoes align-items-center justify-content-center">
