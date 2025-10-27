@@ -15,7 +15,9 @@
                 <div class="container d-flex align-items-start justify-content-between position-relative">
 
                     <div class="div-img-comunidade">
-                        <img class="foto-comunidade" style=" flex: 0; z-index: 10; border-radius: 15px;" src="assets/img/comunidades/+.jpg" alt="zecaixao">
+                        <a href="cadastroComunidades.php">
+                            <img class="foto-comunidade" style=" flex: 0; z-index: 10; border-radius: 15px;" src="assets/img/comunidades/+.jpg" alt="zecaixao">
+                        </a>
                     </div>
 
                     <div class="div-banner-comunidade4 text-white ">

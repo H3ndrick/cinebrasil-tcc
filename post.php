@@ -40,6 +40,7 @@ ini_set('display_errors', 1);
             'titulo' => $tempPost["titulo"],
             'comentario' => $tempPost["comentario"],
             'usuario' => [
+                'id' => $usuarioPostou["id"],
                 'username' => $usuarioPostou["username"],
                 'foto' => $usuarioPostou["foto"]
             ],
@@ -68,7 +69,7 @@ ini_set('display_errors', 1);
                                     <div class="d-flex align-items-start gap-2">
                                         <img src="<?= $data["post"]["usuario"]["foto"]?>" alt="" class="fotoPerfilPost">
                                         <div class="d-flex flex-column">
-                                            <span><?= $data["post"]["usuario"]["username"]?></span>
+                                            <span class="nomeUsuario"><a href="perfil.php?id=<?=$data["post"]["usuario"]["id"]?>" class="link-secondary"><?= $data["post"]["usuario"]["username"]?></a></span>
                                             <span><a href="comunidade.php?id=<?=$data["comunidade"]["id"]?>">comunidade/<?= $data["comunidade"]["titulo"]?></a></span>
                                         </div>
                                     </div>
@@ -145,7 +146,7 @@ ini_set('display_errors', 1);
                                                                     <div class="d-flex align-items-start gap-2">
                                                                         <img src="<?= $comentario["usuario"]["foto"]?>" alt="" class="fotoPerfilPost">
                                                                         <div class="d-flex flex-column">
-                                                                            <span><?= $comentario["usuario"]["username"]?></span>
+                                                                            <span class="nomeUsuario"><a href="perfil.php?id=<?= $comentario["usuario"]["id"]?>" class="link-secondary"><?= $comentario["usuario"]["username"]?></a></span>
                                                                             <span><a href="comunidade.php?id=<?=$data["comunidade"]["id"]?>">comunidade/<?= $data["comunidade"]["titulo"]?></a></span>
                                                                         </div>
                                                                     </div>

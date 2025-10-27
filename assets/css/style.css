@@ -1073,6 +1073,13 @@ h3{
         padding: 2rem 2rem;
         gap: 1.5rem;
     }
+
+    #div-infos-filmes{
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+    }
 }
 
 @media (max-width: 600px) {

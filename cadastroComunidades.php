@@ -1,11 +1,14 @@
 <?php
     include "includes/functions.php";
-    include "includes/head.php";
-    include "includes/header.php";
+    
+    $conn = connect();
     if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"])) {
         header("Location: login.php");
         exit();
     }
+
+    include "includes/head.php";
+    include "includes/header.php";
 ?>
 
     <div class="container mt-5 p-2">

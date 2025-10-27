@@ -70,7 +70,7 @@
                                 <div class="h-100 d-flex align-items-end">
                                     <div>
                                         <h3><?= $data["comunidade"]["titulo"] ?></h3>
-                                        <p class="text-white-50">Criado por <span class="fw-bold"><?= $usuarioCriador["username"] ?></span></p>
+                                        <p class="text-white-50">Criado por <span class="fw-bold"><a href="perfil.php?id=<?=$usuarioCriador["id"]?>" class="link-secondary"><?= $usuarioCriador["username"] ?></a></span></p>
                                     </div>
                                 </div>
                             </div>
