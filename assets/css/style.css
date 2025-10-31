@@ -14,7 +14,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #16181C;
+    background-color: #121217;
     color: white;
     
 }
@@ -706,7 +706,7 @@ h3{
 /* lincon */
 .qualquer-coisa{
     height: 500px;
-    background: linear-gradient(to bottom,rgba(0, 0, 0, 0.3) 0%, #16181C 100%), url('../img/auto_da_compadecida.webp') no-repeat center/cover;
+    background: linear-gradient(to bottom,rgba(0, 0, 0, 0.3) 0%, #121217 100%), url('../img/auto_da_compadecida.webp') no-repeat center/cover;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
