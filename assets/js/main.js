@@ -93,3 +93,7 @@ document.getElementById('seguindo-perfil').addEventListener('click', () => {
 function goToLista(id){
   window.location = `lista.php?id=${id}`;
 }
+
+function goTo(url){
+  window.location = url;
+}

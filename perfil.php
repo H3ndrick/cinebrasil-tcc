@@ -14,7 +14,7 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
     exit();
 }
 ?>
-
+<link rel="stylesheet" href="assets/css/listas-style.css">
 <div class="container-fluid p-0">
     <?php
     include "includes/header.php";
@@ -208,12 +208,13 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
                 <?php endif;?>
                 <?php
                 $listas = getListasByIdUsuario($conn, $idUser);
-
+                
                 foreach ($listas as $i => $lista) {
                     $filmes = getFilmesInLista($conn, $lista["id"]);
+                    $usuarioCriador = getUsuarioById($conn, $lista["idCriadorLista"]);
                     echo '
-                                <div class="container-lista">
-                                    <div class="lista" onclick="goToLista(' . $lista["id"] . ')">
+                                <div class="container-lista" onclick="goToLista(' . $lista["id"] . ')">
+                                    <div class="lista">
                             ';
 
                     for ($i = 0; $i < 4; $i++) {
@@ -231,8 +232,16 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
 
                     echo '
                                 </div>
-                                    <p class=" w-100">' . $lista["titulo"] . '</p>
+                                    <div class="div-infos-lista d-flex flex-column px-3 pb-3">
+                                        <span class="titulo-lista">'.$lista["titulo"].'</span>
+                                        <div class="">
+                                            <span class="usuario-lista">por</span>
+                                            <a class="link-secondary text-decoration" href="perfil.php?id='.$usuarioCriador["id"].'">'.$usuarioCriador["username"].'</a>
+                                        
+                                        </div>
+                                    </div>
                                 </div>
+                                
                             ';
                 }
                 ?>

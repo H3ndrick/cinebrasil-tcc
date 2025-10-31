@@ -521,7 +521,7 @@
     }
 
     function getAllListas($conn){
-        $command = "SELECT id, titulo, descricao FROM listas";
+        $command = "SELECT id, titulo, descricao, idCriadorLista FROM listas";
 
         $stmt = mysqli_prepare($conn, $command);
         mysqli_stmt_execute($stmt);
@@ -569,7 +569,7 @@
     }
 
     function getListasByIdUsuario($conn, $idUsuario){
-        $command = "SELECT id, titulo, descricao FROM listas WHERE idCriadorLista = ?";
+        $command = "SELECT id, titulo, descricao, idCriadorLista FROM listas WHERE idCriadorLista = ?";
 
         $stmt = mysqli_prepare($conn, $command);
         mysqli_stmt_bind_param($stmt, "i", $idUsuario);
