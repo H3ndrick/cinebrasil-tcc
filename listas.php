@@ -64,12 +64,11 @@
 
                             echo '
                                         </div>
-                                        <div class="div-infos-lista d-flex flex-column px-3 pb-3">
-                                            <span class="titulo-lista">'.$lista["titulo"].'</span>
+                                        <div class="div-infos-lista d-flex gap-2 px-3 pb-3">
+                                            <span class="titulo-lista">'.$lista["titulo"].' -</span>
                                             <div class="">
                                                 <span class="usuario-lista">por</span>
                                                 <a class="link-secondary text-decoration" href="perfil.php?id='.$usuarioCriador["id"].'">'.$usuarioCriador["username"].'</a>
-                                            
                                             </div>
                                         </div>
                                     </div>

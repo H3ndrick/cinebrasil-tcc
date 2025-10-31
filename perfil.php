@@ -203,7 +203,9 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
                         <div class="card-lista" style="background-color:rgb(188, 156, 206);"></div>
                         <div class="card-lista" style="background-color:rgb(195, 175, 212);"></div>
                     </div>
-                    <p class=" w-100">Criar lista</p>
+                    <div class="div-infos-lista d-flex gap-2 px-3 pb-3">
+                        <span class="titulo-lista">Criar Lista</span>
+                    </div>
                 </div>
                 <?php endif;?>
                 <?php
@@ -232,12 +234,11 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
 
                     echo '
                                 </div>
-                                    <div class="div-infos-lista d-flex flex-column px-3 pb-3">
-                                        <span class="titulo-lista">'.$lista["titulo"].'</span>
+                                    <div class="div-infos-lista d-flex gap-2 px-3 pb-3">
+                                        <span class="titulo-lista">'.$lista["titulo"].' -</span>
                                         <div class="">
                                             <span class="usuario-lista">por</span>
                                             <a class="link-secondary text-decoration" href="perfil.php?id='.$usuarioCriador["id"].'">'.$usuarioCriador["username"].'</a>
-                                        
                                         </div>
                                     </div>
                                 </div>
