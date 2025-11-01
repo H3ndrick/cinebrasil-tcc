@@ -58,37 +58,43 @@ document.getElementById('comunidades-perfil').addEventListener('click', () => {
   }
 });
 
-document.getElementById('seguidores-perfil').addEventListener('click', () => {
+const seguidoresBtn = document.getElementById('seguidores-perfil');
+
+function trocarParaSeguidores() {
   if(seguidores.classList.contains('hidden')){
     seguidores.classList.remove('hidden');
-
-    if(!linhaDoTempo.classList.contains('hidden')){
-      linhaDoTempo.classList.add('hidden');
-    } else if(!listas.classList.contains('hidden')){
-      listas.classList.add('hidden');
-    }else if(!comunidades.classList.contains('hidden')){
-      comunidades.classList.add('hidden');
-    }else if(!seguindo.classList.contains('hidden')){
-      seguindo.classList.add('hidden');
-    }
+    linhaDoTempo.classList.add('hidden');
+    listas.classList.add('hidden');
+    comunidades.classList.add('hidden');
+    seguindo.classList.add('hidden');
   }
+}
+
+seguidoresBtn.addEventListener('click', trocarParaSeguidores);
+seguidoresBtn.addEventListener('touchstart', function(e) {
+  e.preventDefault(); // evita 2x eventos click em alguns dispositivos
+  trocarParaSeguidores();
 });
 
-document.getElementById('seguindo-perfil').addEventListener('click', () => {
-  if(seguindo.classList.contains('hidden')){
+
+const seguindoBtn = document.getElementById('seguindo-perfil');
+
+function trocarParaSeguindo() {
+  if (seguindo.classList.contains('hidden')) {
     seguindo.classList.remove('hidden');
-
-    if(!linhaDoTempo.classList.contains('hidden')){
-      linhaDoTempo.classList.add('hidden');
-    } else if(!listas.classList.contains('hidden')){
-      listas.classList.add('hidden');
-    }else if(!seguidores.classList.contains('hidden')){
-      seguidores.classList.add('hidden');
-    }else if(!comunidades.classList.contains('hidden')){
-      comunidades.classList.add('hidden');
-    }
+    linhaDoTempo.classList.add('hidden');
+    listas.classList.add('hidden');
+    comunidades.classList.add('hidden');
+    seguidores.classList.add('hidden');
   }
+}
+
+seguindoBtn.addEventListener('click', trocarParaSeguindo);
+seguindoBtn.addEventListener('touchstart', function(e) {
+  e.preventDefault(); // previne que o evento click duplo aconteça em alguns dispositivos móveis
+  trocarParaSeguindo();
 });
+
 
 function goToLista(id){
   window.location = `lista.php?id=${id}`;
