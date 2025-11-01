@@ -12,7 +12,7 @@
             die("Erro ao conectar no banco de dados ". mysqli_connect_error());
         }
 
-        mysqli_set_charset($conn,"utf8");
+        mysqli_set_charset($conn,"utf8mb4");
 
         return $conn;
     }
@@ -502,6 +502,15 @@
         $result = mysqli_stmt_execute($stmt);
 
         return $result;
+    }
+
+    function updateLista($conn, $idLista, $novoNome, $novaDescricao){
+        $command = "UPDATE `listas` SET `titulo`= ?, `descricao` = ? WHERE id = ?";
+        $stmt = mysqli_prepare($conn, $command);
+        mysqli_stmt_bind_param($stmt, "ssi", $novoNome, $novaDescricao, $idLista);
+        $result = mysqli_stmt_execute($stmt);
+
+        return $result ? true : false;
     }
 
     function getListaById($conn, $idLista){

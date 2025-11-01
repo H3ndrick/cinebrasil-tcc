@@ -17,7 +17,6 @@
             }
             
             $descricao = $_POST["descricao"];
-            $filmes = $_POST["filmesAdicionados"];
             
             if(empty($titulo)){
                 $response = ['sucess' => false, 'mensagem' => 'Preencha todos os campos obrigatórios.'];
@@ -26,10 +25,6 @@
             $conn = connect();
             $idUser = getIdUsuarioByToken($conn, $_COOKIE["token"]);
             $idLista = createLista($conn, $titulo, $descricao, $idUser["id_usuario"]);
-            
-            foreach ($filmes as $i => $filme) {
-                addFilmeInLista($conn, $idLista, $filme);
-            }
 
             disconnect($conn);
 

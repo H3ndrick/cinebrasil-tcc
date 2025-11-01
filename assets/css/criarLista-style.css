@@ -1,0 +1,172 @@
+/* criarLista-style.css (expandido com melhorias) */
+
+/* Contêiner do formulário com gradiente sutil */
+.div-form {
+    background: linear-gradient(135deg, #242832, #1b1e27);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    max-width: 600px;
+    color: var(--text-primary);
+    transition: box-shadow 0.3s ease;
+}
+
+.div-form:hover {
+    box-shadow: 0 8px 30px rgba(53, 61, 203, 0.7);
+}
+
+/* Título do formulário */
+.div-form h3 {
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-hover);
+    text-align: center;
+}
+
+/* Labels com ícones */
+.div-form label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* Ícones via pseudo-elementos (exemplo) */
+label[for="titulo"]::before {
+    content: "\1F4D6";
+    font-size: 1.1rem;
+}
+
+label[for="descricao"]::before {
+    content: "\270D";
+    font-size: 1.1rem;
+}
+
+/* Inputs e textarea com animação foco */
+.div-form input[type="text"],
+.div-form textarea {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border-radius: var(--border-radius);
+    border: 1px solid #424a5e;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    resize: vertical;
+    box-shadow: none;
+}
+
+.div-form input[type="text"]:focus,
+.div-form textarea:focus {
+    border-color: var(--primary-hover);
+    outline: none;
+    box-shadow: 0 0 8px var(--primary-hover);
+}
+
+/* Placeholders */
+#titulo::placeholder {
+    color: var(--text-muted);
+}
+
+#descricao::placeholder {
+    color: var(--text-muted);
+}
+
+/* Contador de caracteres para textarea */
+#descricaoContainer {
+    position: relative;
+}
+
+#descricaoCounter {
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    user-select: none;
+}
+
+/* Layout do formulário */
+.col-md-8,
+.col-md-12 {
+    margin-bottom: 1.5rem;
+}
+
+/* Botão com animação hover e efeito clique */
+#btnCriarLista {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: var(--border-radius);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    box-shadow: 0 4px 6px rgba(53, 61, 203, 0.5);
+}
+
+#btnCriarLista:hover {
+    background-color: var(--primary-hover);
+    box-shadow: 0 6px 10px rgba(95, 102, 248, 0.7);
+}
+
+#btnCriarLista:active {
+    transform: scale(0.97);
+}
+
+/* Espaçamentos melhorados */
+.d-flex.py-3 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Toast simples para sucesso */
+#toastSuccess {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    position: fixed;
+    z-index: 1050;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    box-shadow: 0 4px 15px rgba(53, 61, 203, 0.9);
+    transition: visibility 0s, opacity 0.5s ease-in-out;
+    opacity: 0;
+    font-weight: 600;
+}
+
+#toastSuccess.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .div-form {
+        width: 90%;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .div-form {
+        padding: 1rem;
+    }
+
+    text #btnCriarLista {
+        font-size: 1rem;
+        padding: 0.6rem 1rem;
+    }
+}
