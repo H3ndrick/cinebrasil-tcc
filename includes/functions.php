@@ -596,6 +596,29 @@
         return $listas;
     }
 
+    function getIdListasUsuarioByIdFilme($conn, $idFilme, $idCriador){
+        $command = "SELECT lf.id_lista 
+                    FROM lista_filmes lf 
+                    INNER JOIN listas l ON lf.id_lista = l.id 
+                    WHERE lf.id_filme = ? AND l.idCriadorLista = ?";
+    
+        $stmt = mysqli_prepare($conn, $command);
+        mysqli_stmt_bind_param($stmt, "ii", $idFilme, $idCriador);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+
+        $listas = array();
+
+        if($result){
+            while($lista = mysqli_fetch_assoc($result)){
+                array_push($listas, $lista);
+            }
+        }
+
+        return $listas;
+    }
+
+
     function getFilmesInLista($conn, $idLista){
         $command = "SELECT id_filme FROM lista_filmes WHERE id_lista = ?";
 

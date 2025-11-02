@@ -35,17 +35,6 @@
     font-size: 1rem;
 }
 
-/* Ícones via pseudo-elementos (exemplo) */
-label[for="titulo"]::before {
-    content: "\1F4D6";
-    font-size: 1.1rem;
-}
-
-label[for="descricao"]::before {
-    content: "\270D";
-    font-size: 1.1rem;
-}
-
 /* Inputs e textarea com animação foco */
 .div-form input[type="text"],
 .div-form textarea {

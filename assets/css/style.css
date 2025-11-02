@@ -701,7 +701,17 @@ h3{
 }
 
 
+.btn-adicionar-lista{
+    background-color: transparent;
+    border: 1px solid rgb(150, 150, 150);
+    color: rgb(150, 150, 150);
+    transition: 0.3s;
+}
 
+.btn-adicionar-lista:hover{
+    border: 1px solid #2a33a0;
+    color: #2a33a0;
+}
 
 /* lincon */
 .qualquer-coisa{
@@ -820,7 +830,7 @@ h3{
 }
 
 .scrollable-div {
-  height: 350px;        /* altura fixa para ativar o scroll */
+  height: 250px;        /* altura fixa para ativar o scroll */
   overflow-y: auto;     /* mostra a barra de rolagem vertical só quando necessário */
   overflow-x: hidden;   /* esconde a barra de rolagem horizontal */
   border: 1px solid #424a5e; /* opcional, só para visualização */
