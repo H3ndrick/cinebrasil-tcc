@@ -700,10 +700,6 @@ h3{
     flex: 1; position:absolute; left:90px;
 }
 
-
-
-
-/* lincon */
 .qualquer-coisa{
     height: 500px;
     background: linear-gradient(to bottom,rgba(0, 0, 0, 0.3) 0%, #16181C 100%), url('../img/auto_da_compadecida.webp') no-repeat center/cover;
@@ -719,7 +715,7 @@ h3{
     border-radius: 15px
 
 }
-
+    
 .img-coments{
     width: 143px;
     height: 223px;
@@ -820,10 +816,10 @@ h3{
 }
 
 .scrollable-div {
-  height: 350px;        /* altura fixa para ativar o scroll */
-  overflow-y: auto;     /* mostra a barra de rolagem vertical só quando necessário */
-  overflow-x: hidden;   /* esconde a barra de rolagem horizontal */
-  border: 1px solid #424a5e; /* opcional, só para visualização */
+  height: 350px;
+  overflow-y: auto;   
+  overflow-x: hidden;   
+  border: 1px solid #424a5e; 
   background-color: #16181C;
   padding: 10px;
 }
@@ -837,7 +833,6 @@ h3{
 #containerMinhaAnalise{
     width: 300px;
 }
-
 
 .nav-item{
     display: flex;
@@ -866,8 +861,8 @@ h3{
   }
   
   .dropdown-menu {
-    background-color: #242832 !important; /* Cor escura */
-    border: none; /* remove a borda se quiser */
+    background-color: #242832 !important; 
+    border: none; 
   }
 
   @media (max-width: 991.98px) {
@@ -910,14 +905,13 @@ h3{
     }
   }
 
-  /* Container da linha do nome + botão */
   .perfil-header {
     display: flex;
     align-items: center;
-    margin-left: 300px; /* conforme seu design */
+    margin-left: 300px; 
     margin-top: -50px;
     gap: 20px;
-    width: calc(100% - 300px); /* ocupando largura restante da página */
+    width: calc(100% - 300px); 
   }
   
   .perfil-username {
@@ -926,29 +920,27 @@ h3{
     font-weight: 600;
     display: flex;
     flex-direction: column;
-    gap: 5px; /* espaçamento entre nome e bio */
+    gap: 5px; 
   }
   
   .perfil-bio {
     font-size: 1rem;
     font-weight: 400;
-    color: #666666; /* cor cinza para a bio */
+    color: #666666; 
     margin: 0;
-    max-width: 400px; /* opcional, para limitar largura */
+    max-width: 400px; 
   }
-  
-  
-  /* Botão e painel seguidores como um bloco único empurrado pra direita */
+
   .seguir-e-seguidores {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: auto; /* empurra esse bloco para extrema direita */
+    margin-left: auto; 
   }
   
   #followBtn, .perfil-follow-info {
-    width: 240px; /* largura fixa igual para os dois */
-    box-sizing: border-box; /* inclui padding na largura */
+    width: 240px; 
+    box-sizing: border-box; 
     border-radius: 8px;
   }
   
@@ -1524,6 +1516,8 @@ section.d-flex {
   }
   
 
+
+
   /************PERFIL************/
 
   /* Responsividade geral para perfil e lista de avaliações */
@@ -1635,4 +1629,4 @@ section.d-flex {
         background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
       }
       
-      
+    
