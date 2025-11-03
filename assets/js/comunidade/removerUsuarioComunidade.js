@@ -14,12 +14,11 @@ function removerUsuarioComunidade(idComunidade, idUsuario){
         return response.json();
     })
     .then(data => {
-        console.log(data);
 
         if(data.sucess){
             document.getElementById('tbody-usuarios-comunidade').removeChild(document.getElementById(`tr-usuario-${idUsuario}`));
         }
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }

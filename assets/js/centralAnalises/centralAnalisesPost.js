@@ -13,8 +13,30 @@ function permitirPost(id){
     })
     .then(data => {
         getPublicacoesRetidas();
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return;
+    });
+}
+
+function deletePost(idPost){
+    let formData = new FormData();
+    formData.append('idPost', idPost); 
+    formData.append('idComunidade', document.getElementById('idComunidadeInput').value);  
+
+    fetch(`${baseUrl}comunidade/wsDeletePostRetido.php`, {
+        'method' : 'POST', 
+        'body' : formData
+    }).then(response => {
+        if(!response.ok){
+            throw new Error('Não foi possível excluir o post.')
+        }
+        return response.json(); 
+    })
+    .then(data => {
+        getPublicacoesRetidas(); 
+        return;
+    }).catch(error => {
+        return;
     });
 }

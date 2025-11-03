@@ -26,9 +26,9 @@ function salvarLista(id){
     .then(data => {
         document.getElementById('btnSalvarLista').classList.add('hidden');
         document.getElementById('btnRemoverListaSalva').classList.remove('hidden');
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }
 

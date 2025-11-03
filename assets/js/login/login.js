@@ -57,8 +57,6 @@ function login() {
     let form = document.getElementById('loginForm');
     let formData = new FormData(form);
 
-console.log(`${baseUrl}login/wsLogin.php`);
-
     fetch(`${baseUrl}login/wsLogin.php`, {
         method: 'POST',
         body: formData
@@ -69,16 +67,14 @@ console.log(`${baseUrl}login/wsLogin.php`);
         return response.json(); // Trata a resposta como JSON
     })
     .then(data => {
-        console.log(data); // Verifica a resposta no console
 
         if (data.success) {
             // Redireciona para a página inicial em caso de sucesso
-            window.location.href = 'index.php';
+            window.location.href = 'perfil.php';
         } else {
             // Exibe a mensagem de erro caso o login não tenha sido bem-sucedido
             document.getElementById('mensagemErro').textContent = data.mensagem;
         }
     }).catch(error => {
-        console.log(error); // Exibe o erro no console caso ocorra algum problema
     });
 }

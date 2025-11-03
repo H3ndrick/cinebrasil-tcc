@@ -11,8 +11,7 @@ include "includes/header.php";
 
 <main class="d-flex align-items-center justify-content-center">
     <div class="container-fluid pt-4 mt-4 container-grid-posters">
-        <br>
-        <div id="filmes-lista" class="d-flex align-items-center justify-content-center gap-3 flex-wrap">
+        <div id="filmes-lista" class="d-flex align-items-center justify-content-center gap-3 flex-wrap mt-3 pt-3">
             
         </div>
         
@@ -51,7 +50,6 @@ include "includes/header.php";
 
         const container = document.getElementById('filmes-lista');
         container.innerHTML = '';
-        console.log(dados);
         if(dados.total_results > 0){
             dados.results.forEach(filme => {
                 const div = document.createElement('div');
@@ -68,7 +66,7 @@ include "includes/header.php";
                 container.appendChild(div);
             });
 
-            document.getElementById('paginaAtual').textContent = dados.page;
+            document.getElementById('paginaAtual').textContent = `${dados.page} / ${dados.total_pages}`;
             document.getElementById('prevPage').disabled = dados.page === 1;
             document.getElementById('nextPage').disabled = dados.page === dados.total_pages;
             paginaAtual = dados.page;
@@ -93,11 +91,19 @@ include "includes/header.php";
     document.getElementById('prevPage').addEventListener('click', () => {
         const query = getQueryParam('query') || '';
         if (paginaAtual > 1) carregarFilmes(paginaAtual - 1, query);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
     });
 
     document.getElementById('nextPage').addEventListener('click', () => {
         const query = getQueryParam('query') || '';
         carregarFilmes(paginaAtual + 1, query);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
     });
 
     const termoBusca = getQueryParam('query') || '';

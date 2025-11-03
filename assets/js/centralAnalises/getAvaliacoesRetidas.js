@@ -18,14 +18,14 @@ function getAvaliacoesRetidas(){
 
         if(!data.success){
             document.getElementById('containerAvaliacoesRetidas').innerHTML = '<h3>Não há nenhuma avaliação retida.</h3>';
-            return console.log(data);
+            return;
         }
 
         exibirAvaliacoesRetidas(data.avaliacoes, data.usuarios);
 
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }
 
@@ -41,7 +41,7 @@ function exibirAvaliacoesRetidas(avaliacoes, usuarios){
                     <div class="d-flex gap-3">
                         <img src="${usuario.foto}" alt="foto de perfil de ${usuario.username}" class="" style="height: 60px; min-width:60px;">
                         <div class="d-flex flex-column">
-                            <span class="text-white-50 w-100"><a href="perfil.php?id=''" style="width: max-content" class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover mb-1">@${usuario.username}</a></span>
+                            <span class="text-white-50 w-100"><a href="perfil.php?id=${usuario.id}" style="width: max-content" class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover mb-1">@${usuario.username}</a></span>
                             <p class="AvaliacaoUsuario">
                                 ${gerarEstrelas(avaliacao.nota)}
                             </p>

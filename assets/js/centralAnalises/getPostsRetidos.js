@@ -18,14 +18,14 @@ function getPublicacoesRetidas(){
 
         if(!data.success){
             document.getElementById('containerPostsRetidos').innerHTML = '<h3>Não há nenhum post retido.</h3>';
-            return console.log(data);
+            return;
         }
 
         exibirPostsRetidos(data.posts, data.usuarios);
 
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }
 
@@ -40,7 +40,7 @@ function exibirPostsRetidos(posts, usuarios){
                 <div class="d-flex flex-column gap-3 flex-wrap w-100">
                     <div class="d-flex gap-3">
                         <img src="${usuario.foto}" alt="foto de perfil de ${usuario.username}" class="" style="width: 8%; min-width:60px;">
-                        <p class="text-white-50 w-100"><a href="perfil.php?id=''" style="width: max-content" class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover mb-1">@${usuario.username}</a></p>
+                        <p class="text-white-50 w-100"><a href="perfil.php?id=${usuario.id}" style="width: max-content" class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover mb-1">@${usuario.username}</a></p>
                     </div>
 
                     <div>
@@ -60,7 +60,8 @@ function exibirPostsRetidos(posts, usuarios){
 
                         <form method="post">
                             <input type="hidden" name="idPost" value="${post.id}">
-                            <button class="btn bg-dark rounded-0 border-0 text-white-50">
+                            <input type="hidden" name="idComunidadeInput" value="${post.comunidade_id}" id="idComunidadeInput">
+                            <button type="button" class="btn bg-dark rounded-0 border-0 text-white-50" onclick="deletePost(${post.id})">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                                     <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"></path>
                                 </svg>

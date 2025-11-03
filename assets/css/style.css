@@ -14,7 +14,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #16181C;
+    background-color: #121217;
     color: white;
     
 }
@@ -382,8 +382,8 @@ h3{
 
 /* Opcional: efeito hover para destacar o card */
 .card-lista:hover {
-    transform: scale(1.05) translateY(-10px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+    transform: translateY(-2px);
+    box-shadow: 3px 5px 12px rgba(98, 92, 255, 0.3);
     z-index: 10;
 }
 
@@ -412,7 +412,7 @@ h3{
 }
 
 .capa-filme-lista{
-    transition: 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .capa-filme-lista:hover, .capa-filme-adicionar-lista:hover, .filme-selecionado{
     opacity: 0.5;
@@ -715,12 +715,22 @@ h3{
 }
 
 
+.btn-adicionar-lista{
+    background-color: transparent;
+    border: 1px solid rgb(150, 150, 150);
+    color: rgb(150, 150, 150);
+    transition: 0.3s;
+}
 
+.btn-adicionar-lista:hover{
+    border: 1px solid #2a33a0;
+    color: #2a33a0;
+}
 
 /* lincon */
 .qualquer-coisa{
     height: 500px;
-    background: linear-gradient(to bottom,rgba(0, 0, 0, 0.3) 0%, #16181C 100%), url('../img/auto_da_compadecida.webp') no-repeat center/cover;
+    background: linear-gradient(to bottom,rgba(0, 0, 0, 0.3) 0%, #121217 100%), url('../img/auto_da_compadecida.webp') no-repeat center/cover;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -733,7 +743,7 @@ h3{
     border-radius: 15px
 
 }
-
+    
 .img-coments{
     width: 143px;
     height: 223px;
@@ -834,7 +844,7 @@ h3{
 }
 
 .scrollable-div {
-  height: 350px;        /* altura fixa para ativar o scroll */
+  height: 250px;        /* altura fixa para ativar o scroll */
   overflow-y: auto;     /* mostra a barra de rolagem vertical só quando necessário */
   overflow-x: hidden;   /* esconde a barra de rolagem horizontal */
   border: 1px solid #424a5e; /* opcional, só para visualização */
@@ -851,7 +861,6 @@ h3{
 #containerMinhaAnalise{
     width: 300px;
 }
-
 
 .nav-item{
     display: flex;
@@ -880,8 +889,8 @@ h3{
   }
   
   .dropdown-menu {
-    background-color: #242832 !important; /* Cor escura */
-    border: none; /* remove a borda se quiser */
+    background-color: #242832 !important; 
+    border: none; 
   }
 
   @media (max-width: 991.98px) {
@@ -924,14 +933,13 @@ h3{
     }
   }
 
-  /* Container da linha do nome + botão */
   .perfil-header {
     display: flex;
     align-items: center;
-    margin-left: 300px; /* conforme seu design */
+    margin-left: 300px; 
     margin-top: -50px;
     gap: 20px;
-    width: calc(100% - 300px); /* ocupando largura restante da página */
+    width: calc(100% - 300px); 
   }
   
   .perfil-username {
@@ -940,29 +948,27 @@ h3{
     font-weight: 600;
     display: flex;
     flex-direction: column;
-    gap: 5px; /* espaçamento entre nome e bio */
+    gap: 5px; 
   }
   
   .perfil-bio {
     font-size: 1rem;
     font-weight: 400;
-    color: #666666; /* cor cinza para a bio */
+    color: #666666; 
     margin: 0;
-    max-width: 400px; /* opcional, para limitar largura */
+    max-width: 400px; 
   }
-  
-  
-  /* Botão e painel seguidores como um bloco único empurrado pra direita */
+
   .seguir-e-seguidores {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: auto; /* empurra esse bloco para extrema direita */
+    margin-left: auto; 
   }
   
   #followBtn, .perfil-follow-info {
-    width: 240px; /* largura fixa igual para os dois */
-    box-sizing: border-box; /* inclui padding na largura */
+    width: 240px; 
+    box-sizing: border-box; 
     border-radius: 8px;
   }
   
@@ -1536,6 +1542,8 @@ section.d-flex {
   }
   
 
+
+
   /************PERFIL************/
 
   /* Responsividade geral para perfil e lista de avaliações */
@@ -1647,4 +1655,4 @@ section.d-flex {
         background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
       }
       
-      
+    

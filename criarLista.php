@@ -43,7 +43,11 @@ include "includes/header.php";
         contador.id = 'descricaoCounter';
         descricao.parentNode.style.position = 'relative';
         descricao.parentNode.appendChild(contador);
+<<<<<<< HEAD
         const maxLength = 500;
+=======
+        const maxLength = 250;
+>>>>>>> master
         descricao.maxLength = maxLength;
         contador.textContent = `0 / ${maxLength}`;
         descricao.addEventListener('input', () => {
@@ -68,8 +72,6 @@ include "includes/header.php";
 </script>
 <script src="assets/js/lista/createLista.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="assets/js/grafico.js"></script>
 </body>
 
 </html>

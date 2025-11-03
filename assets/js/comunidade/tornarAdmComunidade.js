@@ -16,7 +16,6 @@ function tornarAdmComunidade(idComunidade, idUsuario, isDono){
         return response.json();
     })
     .then(data => {
-        console.log(data);
 
         if(data.sucess){
             document.getElementById(`role-usuario-${idUsuario}`).innerHTML = `
@@ -25,6 +24,6 @@ function tornarAdmComunidade(idComunidade, idUsuario, isDono){
             document.getElementById(`gerenciar-usuario-${idUsuario}`).innerHTML = `<a href="#" class="" onclick="removerAdmComunidade(${idComunidade}, ${idUsuario}, ${isDono})">Remover ADM</a>`;
         }
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }

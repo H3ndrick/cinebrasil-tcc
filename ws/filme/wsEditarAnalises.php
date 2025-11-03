@@ -13,7 +13,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $idUsuario = $_POST["idUsuario"];
         $comentario = $_POST["comentario"];
         $nota = $_POST["nota"];
-
         $conn = connect();
         $atualizou = updateAnalise($conn, $idFilme, $idUsuario, $comentario, $nota);
         

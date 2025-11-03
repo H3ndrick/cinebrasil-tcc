@@ -14,6 +14,11 @@
     $filme = getFilmeById($conn, $idFilme);
     $isAdm = false;
     
+    if($filme == null){
+        header("location: filmes.php");
+        exit();
+    }
+
     if(isset($_COOKIE["token"])){
         $idUsuario = getIdUsuarioByToken($conn, $_COOKIE["token"]);
         $isAdm = isAdm($conn, $idUsuario["id_usuario"]);
@@ -48,8 +53,56 @@
                                     <p></p>
                                     <p>Lançado em <?= $dataLancamento[2] ?> de <?= numeroPraMes($dataLancamento[1]) ?> de <?= $dataLancamento[0] ?></p>
                                 </div>
-                                </div>
+                            </div>
                                 
+                            <?php if(isset($idUsuario)): ?>
+                                <button type="button" class="mb-3 div-icone-analises btn-adicionar-lista d-flex align-items-center justify-content-center gap-2 p-2" data-bs-toggle="modal" data-bs-target="#modalAdicionarLista">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-task" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5zM3 3H2v1h1z"/>
+                                        <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1z"/>
+                                        <path fill-rule="evenodd" d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5zM2 7h1v1H2zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm1 .5H2v1h1z"/>
+                                    </svg>    
+                                    Adicionar à lista
+                                </button>
+
+                                <div class="modal fade" id="modalAdicionarLista" tabindex="-1" aria-labelledby="modalAdicionarListaLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content bg-dark text-white">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="modalAdicionarListaLabel">Adicionar filme às listas</h5>
+                                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <div id="listasUsuarioContainer" class="scrollable-div">
+                                                    <p>Carregando listas...</p>
+                                                </div>
+
+                                                <hr>
+
+                                                <div>
+                                                    <input type="text" id="novaListaTitulo" class="form-control" placeholder="Criar nova lista">
+                                                    <div class="error" id="tituloNovaListaError"></div>
+                                                    <button class="btn btn-success mt-2 w-25 d-flex align-items-center justify-content-center gap-2" id="btnCriarLista">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                                                        </svg>
+                                                        Criar lista
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="modal-footer d-flex gap-3">
+                                                <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="button" class="btn btn-secondary" id="btnSalvarListas">Salvar alterações</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            <?php else: ?>
+                                <a href="login.php" class="btn btn-primary">Login para adicionar a lista</a>
+                            <?php endif; ?>
         
                             <p>
                                 <span>Sinopse</span><br>
@@ -80,7 +133,7 @@
                             </div>
                         </div>
                         
-                        <div>
+                        <div class="mt-2">
                             <input type="hidden" name="idUsuarioLogado" value="<?= $idUsuario["id_usuario"] ?>" id="idUsuarioLogado">
                             <?php 
                                 if(!isset($_COOKIE["token"])){
@@ -385,5 +438,6 @@
     <script src="assets/js/filme/getAnalisesFilme.js"></script>
     <script src="assets/js/filme/editarAnalise.js"></script>
     <script src="assets/js/centralAnalises/centralAnaliseAvaliacao.js"></script>
+    <script src="assets/js/filme/gerenciarLista.js"></script>
 </body>
 </html>

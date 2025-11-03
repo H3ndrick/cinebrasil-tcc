@@ -21,8 +21,8 @@ function entrarNaComunidade(){
     })
     .then(data => {
         window.location.reload(false);
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }

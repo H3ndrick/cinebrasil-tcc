@@ -39,14 +39,17 @@
                             <div class="error" id="confirmPasswordError"></div>
                         </div>
                         
-                        <div class="mb-3 w-100">
-                            <label for="confirmPassword">Foto:</label>
-                            <input type="file" name="imgUser" id="imgUser" class="form-control">
-                            <div class="error" id="imgUserError"></div>
+                        <div class="mb-3 w-75">
+                            <label for="imgUser">Foto:</label>
+                            <input type="file" name="imgUser" id="foto" class="form-control" accept=".jpeg, .jpg, png, .webp">
+                            <div class="error" id="fotoError"></div> </div>
+                        
+                        <div class="mb-3 w-75 d-flex align-items-center gap-2">
+                            <button type="button" id="btnCancelarFoto" class="btn btn-secondary">Cancelar Foto</button> 
                         </div>
 
-                        <div class="d-flex py-3 align-items-center justify-content-center">                    
-                            <button class="btn btn-primary" id="btnCadastrar">Criar Conta</button>
+                        <div class="d-flex gap-3 py-3 align-items-center justify-content-center"> 
+                            <button class="btn btn-primary" id="btnCadastrar">Cadastrar Perfil</button>
                         </div>
 
                         <div class="d-flex align-items-center justify-content-center">

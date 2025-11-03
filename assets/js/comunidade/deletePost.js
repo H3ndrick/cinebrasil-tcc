@@ -14,8 +14,8 @@ function deletePost(idPost){
     })
     .then(data => {
         window.location.href = `comunidade.php?id=${data.idComunidade}`;    
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }

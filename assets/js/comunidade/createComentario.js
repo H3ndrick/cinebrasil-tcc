@@ -26,8 +26,8 @@ function criarComentario(){
         } else{
             window.location.reload();
         }
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }

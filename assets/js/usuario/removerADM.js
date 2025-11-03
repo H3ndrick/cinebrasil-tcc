@@ -13,15 +13,13 @@ function removerAdm(id){
         return response.json();
     })
     .then(data => {
-        console.log(data);
-
         if(data.sucess){
             document.getElementById(`role-usuario-${id}`).innerHTML = `
                 <span class="badge rounded-pill tag-usuario">usuario</span>
             `;
-            document.getElementById(`gerenciar-usuario-${id}`).innerHTML = `<a href="#" class="" onclick="tornarAdm(${id})">Tornar ADM</a> <a href="#" class="" onclick="suspenderUsuario(${id})">Suspender usuario</a>`;
+            document.getElementById(`gerenciar-usuario-${id}`).innerHTML = `<a href="#" class="" onclick="tornarAdm(${id})">Tornar ADM</a>`;
         }
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }

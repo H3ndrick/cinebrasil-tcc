@@ -1,0 +1,215 @@
+
+
+/* Fundo e texto */
+body {
+    background-color: #121217;
+    color: #e0e0e0;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap; /* permite quebrar linha se necessário */
+  justify-content: space-between; /* distribui itens */
+  align-items: center;
+}
+
+.container-fluid{
+    padding: 0;
+    margin: 0;
+}
+
+/* Título da página */
+main h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #a78bfa;
+    margin-bottom: 2rem;
+    letter-spacing: 1.2px;
+    text-align: center;
+}
+
+/* Container das listas em grid responsivo */
+.d-flex.align-items-center.justify-content-center.gap-3.flex-wrap {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+    padding-bottom: 3rem;
+}
+
+/* Container individual da lista */
+.container-lista {
+    width: 300px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    margin-top: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 16px;
+    background-color: #1e1e2f;
+    box-shadow: 0 4px 12px rgba(98, 92, 255, 0.15);
+}
+
+.container-lista:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(98, 92, 255, 0.4);
+}
+
+/* Área das capas/cards sobrepostos das listas */
+.lista {
+    position: relative;
+    width: 260px;
+    height: 175px;
+    margin-bottom: 1rem;
+}
+
+/* Cartões empilhados agora com sombras suaves e radius */
+.card-lista {
+    position: absolute;
+    top: 0;
+    width: 130px;
+    height: 175px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+    background-color: #2a2a40;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.card-lista img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 14px;
+}
+
+/* Deslocamento horizontal para sobreposição */
+.card-lista:nth-child(1) {
+    left: 0;
+    z-index: 4;
+}
+.card-lista:nth-child(2) {
+    left: 50px;
+    z-index: 3;
+}
+.card-lista:nth-child(3) {
+    left: 100px;
+    z-index: 2;
+}
+.card-lista:nth-child(4) {
+    left: 150px;
+    z-index: 1;
+}
+
+/* Hover sobre o cartão */
+.card-lista:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 15px 30px rgba(98, 92, 255, 0.6);
+    border-color: #a78bfa;
+    z-index: 10;
+}
+
+/* Texto do título da lista */
+.titulo-lista, .usuario-lista {
+    font-size: 1.15rem;
+    color: #cfcfff;
+    font-weight: 600;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Estilo do card "Criar lista" */
+#criarLista .card-lista {
+    background: linear-gradient(135deg, #8252cf, #a26fee, #bc9cce, #c3afd4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    filter: drop-shadow(0 0 5px #a78bfa);
+    transition: background 0.4s ease;
+}
+
+#criarLista .card-lista svg {
+    fill: white;
+    width: 48px;
+    height: 48px;
+}
+
+#criarLista .card-lista:hover {
+    background: linear-gradient(135deg, #a26fee, #bc9cce, #c3afd4, #8252cf);
+    filter: drop-shadow(0 0 12px #cfd2ff);
+}
+
+.box-listas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  justify-items: center;
+  padding-bottom: 3rem;
+  max-width: 980px; /* 3 listas de 300px + 2 gaps de 2.5rem (40px aprox) */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    .d-flex.align-items-center.justify-content-center.gap-3.flex-wrap {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 1.5rem;
+        padding-bottom: 2rem;
+    }
+
+    .container-lista {
+        width: 230px;
+    }
+
+    .lista {
+        width: 180px;
+        height: 120px;
+    }
+
+    .card-lista {
+        width: 90px;
+        height: 120px;
+        border-radius: 12px;
+    }
+
+    .card-lista:nth-child(2) {
+        left: 40px;
+    }
+
+    .card-lista:nth-child(3) {
+        left: 75px;
+    }
+
+    .card-lista:nth-child(4) {
+        left: 110px;
+    }
+
+    .container-lista > .div-infos-lista > span {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 980px) {
+  .box-listas {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 640px;
+  }
+}
+
+@media (max-width: 650px) {
+  .box-listas {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+  }
+}
