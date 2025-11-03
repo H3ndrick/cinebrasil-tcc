@@ -59,8 +59,14 @@ btnCadastrar.addEventListener('click', (e) => {
         erroCadastro.textContent = 'Corrija os erros de imagem antes de continuar.';
         return;
     }
+    
+    cadastrarComunidade();
+    
+});
 
-    const formData = new FormData(form);
+function cadastrarComunidade(){
+    let form = document.getElementById('formCadastroComunidade');
+    let formData = new FormData(form);
 
     fetch(`${baseUrl}comunidade/wsCreateComunidade.php`, {
         method: 'POST',
@@ -81,4 +87,4 @@ btnCadastrar.addEventListener('click', (e) => {
         console.error(error);
         erroCadastro.textContent = 'Erro no envio do formulário.';
     });
-});
+}
