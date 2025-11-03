@@ -3,8 +3,21 @@ const baseUrl = window.location.origin + '/ws/';
 document.getElementById('btnCadastrarComunidade').addEventListener('click', (e) => {
     e.preventDefault();
     
-    cadastrarComunidade();
+    if(validaTitulo(document.getElementById('titulo').value)){
+        cadastrarComunidade();
+    }
+    
 });
+
+function validaTitulo(titulo){
+    const erroTitulo = document.getElementById('tituloError');
+    if(titulo.trim() === ''){
+        erroTitulo.textContent = "O título não pode ser vazio";
+        return false;
+    }
+
+    return true;
+}
 
 function cadastrarComunidade(){
     let form = document.getElementById('formCadastroComunidade');
