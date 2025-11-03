@@ -14,6 +14,11 @@
     $filme = getFilmeById($conn, $idFilme);
     $isAdm = false;
     
+    if($filme == null){
+        header("location: filmes.php");
+        exit();
+    }
+
     if(isset($_COOKIE["token"])){
         $idUsuario = getIdUsuarioByToken($conn, $_COOKIE["token"]);
         $isAdm = isAdm($conn, $idUsuario["id_usuario"]);
@@ -69,7 +74,6 @@
 
                                                 <div class="modal-body">
                                                     <div id="listasUsuarioContainer" class="scrollable-div">
-                                                        <!-- Aqui serão listadas dinamicamente as listas com checkboxes -->
                                                         <p>Carregando listas...</p>
                                                     </div>
 

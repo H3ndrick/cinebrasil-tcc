@@ -17,7 +17,6 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
 <link rel="stylesheet" href="assets/css/listas-style.css">
 <div class="container-fluid p-0">
     <?php
-    include "includes/header.php";
 
     if (!isset($_GET["id"])) {
         $idUser = getIdUsuarioByToken($conn, $_COOKIE["token"])["id_usuario"];
@@ -26,6 +25,12 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
     }
 
     $user = getUsuarioById($conn, $idUser);
+    if($user == null){
+        header("location: index.php");
+        exit();
+    }
+
+    include "includes/header.php";
     $idLogado = getIdUsuarioByToken($conn, $_COOKIE["token"])["id_usuario"];
     $isFollowing = isFollowing($conn, $idLogado, $idUser);
     $followersCount = getFollowersCount($conn, $idUser);
