@@ -56,8 +56,6 @@ disconnect($conn);
             <button type="submit" class="btn btn-primary" id="btnEditarComunidade">Confirmar Edição</button>
             <a href="comunidade.php?id=<?= $comunidade['id'] ?>" class="btn btn-secondary">Cancelar</a>
         </div>
-
-        </div>
             
     </form>
 </div>
