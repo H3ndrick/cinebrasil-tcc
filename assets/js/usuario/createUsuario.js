@@ -93,10 +93,7 @@ btnCadastrar.addEventListener('click', (e) => {
     const isConfirmaSenhaValid = validaConfirmarSenha(senha, confirmaSenha);
 
     if (isUsernameValid && isEmailValid && isSenhaValid && isConfirmaSenhaValid) {
-        console.log('Validação bem-sucedida.');
         cadastrar();
-    } else {
-        console.log('Erro na validação.');
     }
 });
 

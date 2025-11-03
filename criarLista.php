@@ -43,7 +43,7 @@ include "includes/header.php";
         contador.id = 'descricaoCounter';
         descricao.parentNode.style.position = 'relative';
         descricao.parentNode.appendChild(contador);
-        const maxLength = 500;
+        const maxLength = 250;
         descricao.maxLength = maxLength;
         contador.textContent = `0 / ${maxLength}`;
         descricao.addEventListener('input', () => {
