@@ -88,8 +88,8 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
                                     <?php endif; ?>
 
                                     <div class="perfil-follow-info">
-                                        <span id="followersCount" data-type="followers" title="Ver seguidores"><a class="categoria-perfil" id="seguidores-perfil"><?= $followersCount ?> seguidores</a></span> |
-                                        <span id="followingCount" data-type="following" title="Ver seguindo"><a class="categoria-perfil" id="seguindo-perfil"><?= $followingCount ?> seguindo</a></span>
+                                        <span id="followersCount" data-type="followers" title="Ver seguidores"><a class="categoria-perfil" id="seguidores-perfil"><?= $followersCount ?> Seguidores</a></span> |
+                                        <span id="followingCount" data-type="following" title="Ver seguindo"><a class="categoria-perfil" id="seguindo-perfil"><?= $followingCount ?> Seguindo</a></span>
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +98,7 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
                         <div class="container d-flex align-items-center justify-content-center">
                             <nav class="navbar d-flex gap-3">
                                 <ul class="d-flex gap-3 align-items-center m-0">
-                                    <li><a class="categoria-perfil" id="avaliacoes-perfil">Avaliacoes</a></li>
+                                    <li><a class="categoria-perfil" id="avaliacoes-perfil">Avaliações</a></li>
                                     <li><a class="categoria-perfil" id="comunidades-perfil">Comunidades</a></li>
                                     <li><a class="categoria-perfil" id="listas-perfil">Listas</a></li>
                                 </ul>

@@ -16,7 +16,7 @@
 
                     <div class="div-img-comunidade">
                         <a href="cadastroComunidades.php">
-                            <img class="foto-comunidade" style=" flex: 0; z-index: 10; border-radius: 15px;" src="assets/img/comunidades/+.jpg" alt="zecaixao">
+                            <img class="foto-comunidade" style=" flex: 0; z-index: 10; border-radius: 15px;" src="assets/img/comunidades/+.jpg">
                         </a>
                     </div>
 

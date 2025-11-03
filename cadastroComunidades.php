@@ -11,60 +11,53 @@
     include "includes/header.php";
 ?>
 
-    <div class="container mt-5 p-2">
-        <main class="mt-3 d-flex align-items-center justify-content-center main">
-            <div class="div-form w-50 p-3 rounded-2">
-                <h3 class="text-center text-white">Criar Comunidade</h3>
-                <div class="w-100 d-flex align-items-center justify-content-center">
-                    <form method="post" enctype="multipart/form-data" id="formCadastroComunidade">
-                        <div class="mb-3 w-100">
-                            <label for="titulo">Titulo:</label>
-                            <input type="text" name="titulo" id="titulo" class="form-control">
-                            <div class="error" id="tituloError"></div>
-                        </div>
-    
-                        <div class="mb-3 w-75">
-                            <label for="descricao">Descricao:</label>
-                            <textarea name="descricao" id="descricao" class="form-control"></textarea>
-                            <div class="error" id="sinopseError"></div>
-                        </div>
+<div class="container mt-5 p-2">
+    <main class="mt-3 d-flex align-items-center justify-content-center main">
+        <div class="div-form w-50 p-3 rounded-2">
+            <h3 class="text-center text-white">Criar Comunidade</h3>
+            <div class="w-100 d-flex align-items-center justify-content-center">
+                <form method="post" enctype="multipart/form-data" id="formCadastroComunidade">
 
+                    <div class="mb-3 w-100">
+                        <label for="titulo">Título:</label>
+                        <input type="text" name="titulo" id="titulo" class="form-control">
+                        <div class="error" id="tituloError"></div>
+                    </div>
 
-    
-                        <div class="mb-3 w-75">
-                            <label for="capa">capa:</label>
-                            <input type="file" name="capa" id="capa" class="form-control">
-                            <div class="error" id="capaError"></div>
-                        </div>
+                    <div class="mb-3 w-75">
+                        <label for="descricao">Descrição:</label>
+                        <textarea name="descricao" id="descricao" class="form-control"></textarea>
+                        <div class="error" id="descricaoError"></div>
+                    </div>
 
-                        <div class="mb-3 w-75">
-                            <label for="banner">banner:</label>
-                            <input type="file" name="banner" id="banner" class="form-control">
-                            <div class="error" id="bannerError"></div>
-                        </div>
+                    <div class="mb-3 w-75 text-center">
+                        <label for="capa">Capa:</label>
+                        <input type="file" name="capa" id="capa" class="form-control mb-2" accept=".jpeg, .jpg, png, .webp">
+                        <button type="button" id="btnCancelarCapa" class="btn btn-secondary">Remover Capa</button>
+                        <div class="error" id="capaError"></div>
+                    </div>
 
-                        <!-- <div class="form-check mb-3">
-                            <input type="checkbox" name="privacidade" id="novidades" class="form-check-input">
-                            <label for="privacidade" class="form-check-label">Pública</label>
-                        </div> -->
-    
-                        <div class="d-flex py-3 align-items-center justify-content-center">                    
-                            <button class="btn btn-primary" id="btnCadastrarComunidade">Criar Comunidade</button>
-                        </div>
+                    <div class="mb-3 w-75 text-center">
+                        <label for="banner">Banner:</label>
+                        <input type="file" name="banner" id="banner" class="form-control mb-2" accept=".jpeg, .jpg, png, .webp">
+                        <button type="button" id="btnCancelarBanner" class="btn btn-secondary">Remover Banner</button>
+                        <div class="error" id="bannerError"></div>
+                    </div>
 
-                        <div class="error" id="erroCadastro"></div>
-                    </form>
-                </div>
+                    <div class="d-flex py-3 align-items-center justify-content-center">                    
+                        <button class="btn btn-primary" id="btnCadastrarComunidade">Criar Comunidade</button>
+                    </div>
+
+                    <div class="error text-center" id="erroCadastro"></div>
+                </form>
             </div>
-        </main>
+        </div>
+    </main>
+</div>
 
-        <footer>
-
-        </footer>
-    </div>
-    <script src="assets/js/comunidade/createComunidade.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="assets/js/grafico.js"></script>
+<script src="assets/js/comunidade/createComunidade.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="assets/js/grafico.js"></script>
 </body>
 </html>
