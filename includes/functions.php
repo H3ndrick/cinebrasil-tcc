@@ -494,6 +494,7 @@
 
     function deleteLista($conn, $idLista){
         removeAllFilmesLista($conn, $idLista);
+        removeAllListasSalvas($conn, $idLista);
 
         $command = "DELETE FROM listas WHERE id = ?";
 
@@ -569,6 +570,16 @@
 
     function removeAllFilmesLista($conn, $idLista){
         $command = "DELETE FROM lista_filmes WHERE id_lista = ?";
+
+        $stmt = mysqli_prepare($conn, $command);
+        mysqli_stmt_bind_param($stmt, "i", $idLista);
+        $result = mysqli_stmt_execute($stmt);
+
+        return $result;
+    }
+
+    function removeAllListasSalvas($conn, $idLista){
+        $command = "DELETE FROM listas_salvas WHERE id_lista = ?";
 
         $stmt = mysqli_prepare($conn, $command);
         mysqli_stmt_bind_param($stmt, "i", $idLista);
