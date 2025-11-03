@@ -26,7 +26,7 @@
                 <div class="row g-4 d-flex justify-content-center">
                     <!-- Feature 1 -->
                     <div class="col-lg-4 col-md-6">
-                        <a href="filmes.php" style="color: inherit; text-decoration: none;">
+                        <a href="listas.php" style="color: inherit; text-decoration: none;">
                         <div class="feature-card">
                             <div class="feature-icon">
                                 <img src="assets/img/landing-page/capas-landing.png" alt="Criar listas" class="feature-img-2">

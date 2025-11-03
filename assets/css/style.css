@@ -81,6 +81,20 @@ main {
     height: 100%;
 }
 
+.tamanho-form{
+    width: 60%;
+}
+@media (max-width: 900px) {
+    .tamanho-form{
+        width: 80%;
+    }
+}
+@media (max-width: 550px) {
+    .tamanho-form{
+        width: 100%;
+    }
+}
+
 header .conteudo{
     height: 50px;
     background: rgb(34,193,195);
@@ -464,7 +478,7 @@ h3{
     background-size: cover;
     background-position: center;
 
-    background-image: linear-gradient(to bottom, transparent 0%, #16181C 100%), url('../img/comunidades/banner-perfil.png');
+    background-image: linear-gradient(to bottom, transparent 0%, #16181C 100%), url('../img/fundo4.jpg');
 }
 
 .div-foto-perfil{
@@ -1474,13 +1488,11 @@ section.d-flex {
 
 /************COMUNIDADE************/
 
-
- 
   @media (max-width: 768px) {
     .div-capa-comunidade {
-      width: 1200px;
+      width: 100px;
       
-      margin-right: 1.5rem;
+      margin-right: 100px;
     }
     .col-12 > .row > .col:nth-child(2) h3 {
       font-size: 1.7rem;

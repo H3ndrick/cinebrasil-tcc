@@ -13,9 +13,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #5D58ED;
+            --secondary-color: #242832;
+            --accent-color: #a78bfa;
+            --text-dark: #e0e0e0;
+            --text-light: #cfcfff;
+            --background: #121217;
+            --card-bg: #1e1e2f;
+            --border-radius: 16px;
+        }
 
-
-        /* Fundo e texto */ 
+        /* Fundo e texto */
         body {
             background-color: #121217;
             color: #e0e0e0;
@@ -33,7 +42,6 @@
             padding: 40px 20px;
             background: var(--background);
             min-height: 100vh;
-            
         }
 
         /* Título Principal */
@@ -60,7 +68,7 @@
         .comunidade-card {
             display: flex;
             background-color: #1e1e2f;
-            border-radius: 10px;
+            border-radius: var(--border-radius);
             box-shadow: 0 4px 12px rgba(98, 92, 255, 0.15);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             overflow: hidden;
@@ -69,8 +77,8 @@
         }
 
         .comunidade-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 3px 5px 12px rgba(98, 92, 255, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(98, 92, 255, 0.4);
         }
 
         /* Banner como fundo de todo o card */
@@ -93,7 +101,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(30, 30, 47, 0.7) 40%, rgba(47, 79, 229, 0.3) 150%);
+            background: linear-gradient(135deg, rgba(93, 88, 237, 0.85) 0%, rgba(36, 40, 50, 0.9) 100%);
         }
 
         /* Container do conteúdo (sobre o banner) */
@@ -118,8 +126,9 @@
         .avatar-img {
             width: 160px;
             height: 160px;
-            border-radius: 5px;
+            border-radius: 12px;
             object-fit: cover;
+            border: 4px solid white;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
 
@@ -149,6 +158,11 @@
         .comunidade-title a {
             color: white;
             text-decoration: none;
+        }
+
+        .comunidade-title a:hover {
+            color: #ffd93d;
+            text-shadow: 0 2px 8px rgba(255, 217, 61, 0.3);
         }
 
         .comunidade-description {
@@ -184,7 +198,7 @@
         /* Botões */
         .btn-comunidade {
             background: white;
-            color: #3455fb !important;
+            color: #5D58ED !important;
             border: none;
             border-radius: 8px;
             padding: 10px 25px;
@@ -198,14 +212,15 @@
 
         .btn-comunidade:hover {
             background: #f8f9fa;
+            transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-            color: rgba(18, 18, 23) !important;
+            color: #5D58ED !important;
         }
 
         /* Card de criar comunidade especial */
         .create-card {
-            border: 2px  #5D58ED;
-            background: linear-gradient(135deg, #rgba(36, 64, 174), black);
+            border: 2px dashed #5D58ED;
+            background: linear-gradient(135deg, #1e1e2f, #2a2a40);
         }
 
         .create-card .comunidade-banner {
@@ -213,10 +228,11 @@
         }
 
         .create-card .comunidade-avatar {
-            background: linear-gradient(135deg, #222430, rgba(36, 64, 174), #3455fb);
+            background: linear-gradient(135deg, #8252cf, #a26fee, #bc9cce, #c3afd4);
             display: flex;
             align-items: center;
             justify-content: center;
+            filter: drop-shadow(0 0 5px #a78bfa);
         }
 
         .create-card .avatar-img {
@@ -230,7 +246,10 @@
             font-weight: 300;
         }
 
-    
+        .create-card:hover {
+            border-color: #a78bfa;
+            filter: drop-shadow(0 0 12px #cfd2ff);
+        }
 
         .create-card .comunidade-info {
             background: none;
@@ -339,17 +358,13 @@
 </head>
 <body>
     <div class="container-fluid">
-        <main class="main ">
+        <main class="main">
             <div class="text-center mt-4">
-                <h3>Explorar Comunidades</h3>
-                
+                <h1 class="page-title">Explorar Comunidades</h1>
             </div>
 
-            <div class="comunidades-container align-items-center justify-content">
+            <div class="comunidades-container">
                 <!-- Card para criar nova comunidade -->
-
-                <a style="text-decoration: none;" href="cadastroComunidades.php">
-
                 <div class="comunidade-card create-card">
                     <div class="comunidade-content">
                         <div class="comunidade-avatar">
@@ -364,15 +379,14 @@
                             
                             <div class="card-footer">
                                 <div class="comunidade-meta">
+                                    <span class="meta-item">Comece agora</span>
                                 </div>
-                               <div class="btn-comunidade">
+                                <a class="btn-comunidade" href="cadastroComunidades.php">
                                     Criar
-                                    </div>
-                                
+                                </a>
                             </div>
                         </div>
                     </div>
-                    </a>
                 </div>
                 
                 <?php 
@@ -391,23 +405,20 @@
 
                             echo '
                                 <div class="comunidade-card">
-
-                                <a style="text-decoration: none;" href="comunidade.php?id='.$comunidade["id"].'">
-
                                     <div class="comunidade-banner" style="background: url('.$banner.')"></div>
                                     
                                     <div class="comunidade-content">
                                         <div class="comunidade-avatar">
-                                        
-                                                    
-                                                
                                             <img class="avatar-img" src="'. $capa .'" alt="'.$comunidade["titulo"].'">
-                                            
                                         </div>
 
                                         <div class="comunidade-info text-white">
                                             <div class="card-header">
-                                                <h3 class="comunidade-title">'.$comunidade["titulo"].'</h3>
+                                                <h3 class="comunidade-title">
+                                                    <a href="comunidade.php?id='.$comunidade["id"].'">'
+                                                        .$comunidade["titulo"].'
+                                                    </a>
+                                                </h3>
                                                 <p class="comunidade-description">'.$comunidade["descricao"].'</p>
                                             </div>
                                             
@@ -423,14 +434,12 @@
                                                     </span>
                                                 </div>
                                                 <a class="btn-comunidade" href="comunidade.php?id='.$comunidade["id"].'">
-                                                    Ver mais
+                                                    ver mais
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
-                                    </a>
                                 </div>
-                                
                             ';
                         }
                     } else {

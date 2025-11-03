@@ -37,8 +37,8 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
         <section class="banner-perfil">
         </section>
         <section class="container  position-relative">
-            <div class="div-foto-perfil overflow-hidden d-flex align-items-center justify-content-center position-absolute translate-middle badge">
-                <img src="<?= $user["foto"]; ?>" alt="" class="h-100" draggable="false">
+            <div style="object-fit: cover;" class="div-foto-perfil overflow-hidden d-flex align-items-center justify-content-center position-absolute translate-middle badge">
+                <img src="<?= $user["foto"]; ?>" alt="" class="h-100 rounded-circle seguindo-avatar" style="object-fit: cover; " draggable="false">
             </div>
             <div class="row">
                 <div class="col-12">
@@ -84,7 +84,7 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
                         <div class="container d-flex align-items-center justify-content-center">
                             <nav class="navbar d-flex gap-3">
                                 <ul class="d-flex gap-3 align-items-center m-0">
-                                    <li><a class="categoria-perfil" id="avaliacoes-perfil">Avaliacoes</a></li>
+                                    <li><a class="categoria-perfil" id="avaliacoes-perfil">Avaliações</a></li>
                                     <li><a class="categoria-perfil" id="comunidades-perfil">Comunidades</a></li>
                                     <li><a class="categoria-perfil" id="listas-perfil">Listas</a></li>
                                 </ul>
@@ -153,31 +153,50 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
                         $qntMembros = getQntUsuariosComunidade($conn, $comunidade["id"])["qntUsers"];
                         $criadorComunidade = getUsuarioById($conn, $comunidade["criador_id"]);
 
+                        $capa = !empty($comunidade["capa"]) ? $comunidade["capa"] : "assets/img/comunidades/default-avatar.jpg";
+                            $banner = !empty($comunidade["banner"]) ? $comunidade["banner"] : "assets/img/comunidades/default-banner.jpg";
+
                         echo '
-                                    <div class="div-form p-3 rounded-2 comunidade-card m-3">
+                        <div class="comunidade-card" style="margin-top: 25px;">
 
-                                        <div class="container d-flex align-items-start justify-content-between position-relative">
-                                            <a href="comunidade.php?id=' . $comunidade["id"] . '">
-                                                <div class="div-img-comunidade">
-                                                    <img class="foto-comunidade" style=" flex: 0; z-index: 100; border-radius: 15px;" src="' . $comunidade["capa"] . '" alt="zecaixao">
-                                                </div>
-                                            </a>
+                        <a style="text-decoration: none;" href="comunidade.php?id='.$comunidade["id"].'">
 
-                                            <div class="div-banner-comunidade text-white" style="background: linear-gradient(to bottom,rgba(0, 0, 0, 0.3) 0%, #242832 100%), url(' . $comunidade["banner"] . ')">
-                                                <h3 style="margin-left: 40px; margin-top: 10px;"><a href="comunidade.php?id=' . $comunidade["id"] . '" class="link-light link-underline link-underline-opacity-0">' . $comunidade["titulo"] . '</a></h3>
-                                                <p style="margin-left: 40px;">' . $comunidade["descricao"] . '</p>
-                                                <a style="margin-left: 40px; margin-top: 30px; width: 177px; height: 44.29px; color: #5D58ED;" class="btn btn-primary text-white" href="comunidade.php?id=' . $comunidade["id"] . '">ver mais</a>
+                            <div class="comunidade-banner" style="background: url('.$banner.')"></div>
+                            
+                            <div class="comunidade-content">
+                                <div class="comunidade-avatar">
+                                
                                             
-                                                <div class="d-flex">
-                                                    
-                                                </div>
-
-                                                <p style="margin-left: 40px; margin-top: 30px;"> ' . $qntMembros . ' Membros | Criado por ' . $criadorComunidade["username"] . '</p>
-                                            </div>
-
-                                        </div>
                                         
+                                    <img class="avatar-img" src="'. $capa .'" alt="'.$comunidade["titulo"].'">
+                                    
+                                </div>
+
+                                <div class="comunidade-info text-white">
+                                    <div class="card-header">
+                                    <h3 class="comunidade-title">'.$comunidade["titulo"].'</h3>
+                                        <p class="comunidade-description">'.$comunidade["descricao"].'</p>
                                     </div>
+                                    
+                                    <div class="card-footer">
+                                        <div class="comunidade-meta">
+                                            <span class="meta-item">
+                                                <i class="fas fa-users"></i>
+                                                '.$qntMembros.' Membros
+                                            </span>
+                                            <span class="meta-item">|</span>
+                                            <span class="meta-item">
+                                                Criado por '.$criadorComunidade["username"].'
+                                            </span>
+                                        </div>
+                                        <a class="btn-comunidade" href="comunidade.php?id='.$comunidade["id"].'">
+                                            Ver mais
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
                                 ';
                     }
                 } else {
@@ -517,6 +536,7 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
 .seguindo-avatar {
     border: 3px solid rgba(255, 255, 255, 0.1);
     transition: border-color 0.2s ease;
+    object-fit: cover;
 }
 
 .seguindo-card:hover .seguindo-avatar {
@@ -535,5 +555,365 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
 </style>
 
 </body>
+<style>
 
+        
+
+        /* Fundo e texto */ 
+        body {
+            background-color: #121217;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+        }
+
+        .container-fluid{
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Main Container */
+        .main {
+            padding: 40px 20px;
+            background: var(--background);
+            min-height: 100vh;
+            
+        }
+
+        /* Título Principal */
+        .page-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #a78bfa;
+            margin-bottom: 2rem;
+            letter-spacing: 1.2px;
+            text-align: center;
+        }
+
+        /* Container das comunidades em linhas */
+        .comunidades-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-bottom: 3rem;
+        }
+
+        /* Card de comunidade individual */
+        .comunidade-card {
+            display: flex;
+            background-color: #1e1e2f;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(98, 92, 255, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            min-height: 200px;
+            position: relative;
+        }
+
+        .comunidade-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 3px 5px 12px rgba(98, 92, 255, 0.3);
+        }
+
+        /* Banner como fundo de todo o card */
+        .comunidade-banner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            z-index: 1;
+        }
+
+        .comunidade-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(30, 30, 47, 0.7) 40%, rgba(47, 79, 229, 0.3) 150%);
+        }
+
+        /* Container do conteúdo (sobre o banner) */
+        .comunidade-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            width: 100%;
+            min-height: 200px;
+        }
+
+        /* Avatar da comunidade (lado esquerdo) */
+        .comunidade-avatar {
+            flex: 0 0 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .avatar-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 5px;
+            object-fit: cover;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Informações da comunidade (lado direito) */
+        .comunidade-info {
+            flex: 1;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: white;
+        }
+
+        /* Header do card */
+        .card-header {
+            margin-bottom: 15px;
+        }
+
+        .comunidade-title {
+            font-size: 1.6rem;
+            color: white;
+            font-weight: 700;
+            margin: 0 0 12px 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .comunidade-title a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .comunidade-description {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.5;
+            margin: 0;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Footer do card */
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .comunidade-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Botões */
+        .btn-comunidade {
+            background: white;
+            color: #3455fb !important;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-comunidade:hover {
+            background: #f8f9fa;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            color: rgba(18, 18, 23) !important;
+        }
+
+        /* Card de criar comunidade especial */
+        .create-card {
+            border: 2px  #5D58ED;
+            background: linear-gradient(135deg, #rgba(36, 64, 174), black);
+        }
+
+        .create-card .comunidade-banner {
+            display: none;
+        }
+
+        .create-card .comunidade-avatar {
+            background: linear-gradient(135deg, #222430, rgba(36, 64, 174), #3455fb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .create-card .avatar-img {
+            display: none;
+        }
+
+        .create-card .comunidade-avatar::before {
+            content: '+';
+            font-size: 3.5rem;
+            color: white;
+            font-weight: 300;
+        }
+
+    
+
+        .create-card .comunidade-info {
+            background: none;
+        }
+
+        /* Estados Vazios */
+        .empty-state {
+            text-align: center;
+            padding: 60px 40px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 12px rgba(98, 92, 255, 0.15);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            color: #a78bfa;
+            margin-bottom: 20px;
+        }
+
+        .empty-state h4 {
+            color: #cfcfff;
+            margin-bottom: 15px;
+        }
+
+        .empty-state p {
+            color: #a0a0c0;
+            margin-bottom: 25px;
+        }
+
+        /* Layout Responsivo */
+        @media (max-width: 768px) {
+            
+
+            .comunidade-card {
+                flex-direction: column;
+                min-height: auto;
+            }
+            
+            .comunidade-content {
+                flex-direction: column;
+            }
+            
+            .comunidade-avatar {
+                flex: none;
+                padding: 20px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                
+            }
+            
+            .avatar-img {
+                width: 120px;
+                height: 120px;
+                
+            }
+            
+            .comunidade-info {
+                padding: 20px;
+            }
+            
+            .card-footer {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            
+            .comunidade-meta {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .comunidade-title {
+                font-size: 1.4rem;
+            }
+            .perfil-follow-info{
+                margin-right: -100px;
+                margin-top: 90px;
+                max-width: 300px;
+             }
+
+            .perfil-username{
+                margin-left: -100px;
+                
+             }
+            .div-foto-perfil{
+                margin-left: 40px;
+                
+              }
+        }
+
+            
+
+        @media (max-width: 480px) {
+            .main {
+                padding: 20px 15px;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .comunidade-info {
+                padding: 15px;
+            }
+            
+            .comunidade-title {
+                font-size: 1.3rem;
+            }
+            
+            .comunidade-description {
+                font-size: 0.9rem;
+            }
+            
+            .comunidade-avatar {
+                flex: 0 0 150px;
+            }
+            
+            .avatar-img {
+                width: 100px;
+                height: 100px;
+            }
+            .perfil-follow-info{
+                margin-right: -100px;
+                margin-top: 90px;
+                max-width: 300px;
+             }
+
+            .perfil-username{
+                margin-left: -100px;
+                
+             }
+            .div-foto-perfil{
+                margin-left: 40px;
+                
+              }
+        }
+
+        
+    </style>
 </html>
