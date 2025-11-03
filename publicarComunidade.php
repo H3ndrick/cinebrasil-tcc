@@ -93,9 +93,10 @@ ini_set('display_errors', 1);
                                         <button class="ql-clean"></button>
                                     </span>
                                 </div>
-                                <div id="editor">
-                                </div>
+                                <div id="editor"></div>
+                                <div class="error" id="erroConteudo">
 
+                                </div>
                                 <div class="d-flex py-3 align-items-center justify-content-end">                    
                                     <button class="btn btn-primary rounded-pill w-25" id="btnCriarPublicacao">Postar</button>
                                 </div>

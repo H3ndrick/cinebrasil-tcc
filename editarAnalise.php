@@ -58,7 +58,7 @@ ini_set('display_errors', 1);
                                                 <i class="bi bi-star" data-value="5"></i>
                                             </div>
 
-                                            <input type="hidden" name="nota" id="notaAvaliacaoEditada" required> 
+                                            <input type="hidden" name="nota" id="notaAvaliacaoEditada" value="<?= $data["analise"]["nota"] ?>" required> 
                                         </div>
 
                                     <div class="mb-3">
@@ -89,6 +89,7 @@ ini_set('display_errors', 1);
         const starsEdit = document.querySelectorAll('#star-rating-edit i');
         const notaInputEditada = document.getElementById('notaAvaliacaoEditada');
         let currentRatingEdit = notaInput.value; 
+        
 
         function setStars(rating, stars) {
             stars.forEach((star, index) => {
