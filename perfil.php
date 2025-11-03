@@ -19,7 +19,8 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
     <?php
 
     if (!isset($_GET["id"])) {
-        $idUser = getIdUsuarioByToken($conn, $_COOKIE["token"])["id_usuario"];
+        $idUser = getIdUsuarioByToken($conn, $_COOKIE["token"]);
+        $idUser = $idUser["id_usuario"];
     } else {
         $idUser = $_GET["id"];
     }
@@ -31,6 +32,14 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
     }
 
     include "includes/header.php";
+
+    if (!isset($_GET["id"])) {
+        $idUser = getIdUsuarioByToken($conn, $_COOKIE["token"]);
+        $idUser = $idUser["id_usuario"];
+    } else {
+        $idUser = $_GET["id"];
+    }
+
     $idLogado = getIdUsuarioByToken($conn, $_COOKIE["token"])["id_usuario"];
     $isFollowing = isFollowing($conn, $idLogado, $idUser);
     $followersCount = getFollowersCount($conn, $idUser);
