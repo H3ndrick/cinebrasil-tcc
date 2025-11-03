@@ -53,10 +53,10 @@ disconnect($conn);
         </div>
 
         <div class="d-flex justify-content-center gap-3 w-100 my-3">
-                <button type="submit" class="btn btn-primary" id="btnEditarComunidade">Confirmar Edição</button>
-                <a href="comunidade.php?id=<?= $comunidade['id'] ?>" class="btn btn-secondary">Cancelar</a>
-            </div>
+            <button type="submit" class="btn btn-primary" id="btnEditarComunidade">Confirmar Edição</button>
+            <a href="comunidade.php?id=<?= $comunidade['id'] ?>" class="btn btn-secondary">Cancelar</a>
         </div>
+            
     </form>
 </div>
 
