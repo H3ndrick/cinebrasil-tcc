@@ -7,10 +7,16 @@
         header("Location: login.php");
         exit();
     }
+
+    $idComunidade = $_GET["id"];
+    $comunidade = getComunidadeById($conn, $idComunidade);
+
+    if($comunidade == null){
+        header("location: comunidades.php");
+        exit();
+    }
 ?>
     <?php 
-        $idComunidade = $_GET["id"];
-        $comunidade = getComunidadeById($conn, $idComunidade);
         $idUsuario = getIdUsuarioByToken($conn, $_COOKIE["token"])["id_usuario"];
         $usuarioCriador = getUsuarioById($conn, $comunidade["criador_id"]);
         $membro = $idUsuario ? isMembro($conn, $idComunidade, $idUsuario) : false;

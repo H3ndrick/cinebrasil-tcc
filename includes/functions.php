@@ -12,7 +12,7 @@
             die("Erro ao conectar no banco de dados ". mysqli_connect_error());
         }
 
-        mysqli_set_charset($conn,"utf8");
+        mysqli_set_charset($conn,"utf8mb4");
 
         return $conn;
     }
@@ -504,6 +504,15 @@
         return $result;
     }
 
+    function updateLista($conn, $idLista, $novoNome, $novaDescricao){
+        $command = "UPDATE `listas` SET `titulo`= ?, `descricao` = ? WHERE id = ?";
+        $stmt = mysqli_prepare($conn, $command);
+        mysqli_stmt_bind_param($stmt, "ssi", $novoNome, $novaDescricao, $idLista);
+        $result = mysqli_stmt_execute($stmt);
+
+        return $result ? true : false;
+    }
+
     function getListaById($conn, $idLista){
         $command = "SELECT id, titulo, descricao, idCriadorLista FROM listas WHERE id = ?";
         $stmt = mysqli_prepare($conn, $command);
@@ -521,7 +530,7 @@
     }
 
     function getAllListas($conn){
-        $command = "SELECT id, titulo, descricao FROM listas";
+        $command = "SELECT id, titulo, descricao, idCriadorLista FROM listas";
 
         $stmt = mysqli_prepare($conn, $command);
         mysqli_stmt_execute($stmt);
@@ -569,7 +578,7 @@
     }
 
     function getListasByIdUsuario($conn, $idUsuario){
-        $command = "SELECT id, titulo, descricao FROM listas WHERE idCriadorLista = ?";
+        $command = "SELECT id, titulo, descricao, idCriadorLista FROM listas WHERE idCriadorLista = ?";
 
         $stmt = mysqli_prepare($conn, $command);
         mysqli_stmt_bind_param($stmt, "i", $idUsuario);
@@ -586,6 +595,29 @@
 
         return $listas;
     }
+
+    function getIdListasUsuarioByIdFilme($conn, $idFilme, $idCriador){
+        $command = "SELECT lf.id_lista 
+                    FROM lista_filmes lf 
+                    INNER JOIN listas l ON lf.id_lista = l.id 
+                    WHERE lf.id_filme = ? AND l.idCriadorLista = ?";
+    
+        $stmt = mysqli_prepare($conn, $command);
+        mysqli_stmt_bind_param($stmt, "ii", $idFilme, $idCriador);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+
+        $listas = array();
+
+        if($result){
+            while($lista = mysqli_fetch_assoc($result)){
+                array_push($listas, $lista);
+            }
+        }
+
+        return $listas;
+    }
+
 
     function getFilmesInLista($conn, $idLista){
         $command = "SELECT id_filme FROM lista_filmes WHERE id_lista = ?";

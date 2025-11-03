@@ -40,7 +40,7 @@ function exibirPostsRetidos(posts, usuarios){
                 <div class="d-flex flex-column gap-3 flex-wrap w-100">
                     <div class="d-flex gap-3">
                         <img src="${usuario.foto}" alt="foto de perfil de ${usuario.username}" class="" style="width: 8%; min-width:60px;">
-                        <p class="text-white-50 w-100"><a href="perfil.php?id=''" style="width: max-content" class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover mb-1">@${usuario.username}</a></p>
+                        <p class="text-white-50 w-100"><a href="perfil.php?id=${usuario.id}" style="width: max-content" class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover mb-1">@${usuario.username}</a></p>
                     </div>
 
                     <div>

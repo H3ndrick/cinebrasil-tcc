@@ -14,18 +14,32 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
     exit();
 }
 ?>
-
+<link rel="stylesheet" href="assets/css/listas-style.css">
 <div class="container-fluid p-0">
     <?php
-    include "includes/header.php";
 
     if (!isset($_GET["id"])) {
-        $idUser = getIdUsuarioByToken($conn, $_COOKIE["token"])["id_usuario"];
+        $idUser = getIdUsuarioByToken($conn, $_COOKIE["token"]);
+        $idUser = $idUser["id_usuario"];
     } else {
         $idUser = $_GET["id"];
     }
 
     $user = getUsuarioById($conn, $idUser);
+    if($user == null){
+        header("location: index.php");
+        exit();
+    }
+
+    include "includes/header.php";
+
+    if (!isset($_GET["id"])) {
+        $idUser = getIdUsuarioByToken($conn, $_COOKIE["token"]);
+        $idUser = $idUser["id_usuario"];
+    } else {
+        $idUser = $_GET["id"];
+    }
+
     $idLogado = getIdUsuarioByToken($conn, $_COOKIE["token"])["id_usuario"];
     $isFollowing = isFollowing($conn, $idLogado, $idUser);
     $followersCount = getFollowersCount($conn, $idUser);
@@ -53,7 +67,7 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
                                 <?php 
                                     if ($idUser == $idLogado):
                                 ?>
-                                <div class="menu-reticencias">
+                                <div class="menu-reticencias share-container">
                                     <button class="share-button" onclick="toggleShareOptions()">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-three-dots" viewBox="0 0 16 16">
                                             <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
@@ -203,17 +217,20 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
                         <div class="card-lista" style="background-color:rgb(188, 156, 206);"></div>
                         <div class="card-lista" style="background-color:rgb(195, 175, 212);"></div>
                     </div>
-                    <p class=" w-100">Criar lista</p>
+                    <div class="div-infos-lista d-flex gap-2 px-3 pb-3">
+                        <span class="titulo-lista">Criar Lista</span>
+                    </div>
                 </div>
                 <?php endif;?>
                 <?php
                 $listas = getListasByIdUsuario($conn, $idUser);
-
+                
                 foreach ($listas as $i => $lista) {
                     $filmes = getFilmesInLista($conn, $lista["id"]);
+                    $usuarioCriador = getUsuarioById($conn, $lista["idCriadorLista"]);
                     echo '
-                                <div class="container-lista">
-                                    <div class="lista" onclick="goToLista(' . $lista["id"] . ')">
+                                <div class="container-lista" onclick="goToLista(' . $lista["id"] . ')">
+                                    <div class="lista">
                             ';
 
                     for ($i = 0; $i < 4; $i++) {
@@ -231,8 +248,15 @@ if (!isset($_COOKIE["token"]) || !getIdUsuarioByToken($conn, $_COOKIE["token"]))
 
                     echo '
                                 </div>
-                                    <p class=" w-100">' . $lista["titulo"] . '</p>
+                                    <div class="div-infos-lista d-flex gap-2 px-3 pb-3">
+                                        <span class="titulo-lista">'.$lista["titulo"].' -</span>
+                                        <div class="">
+                                            <span class="usuario-lista">por</span>
+                                            <a class="link-secondary text-decoration" href="perfil.php?id='.$usuarioCriador["id"].'">'.$usuarioCriador["username"].'</a>
+                                        </div>
+                                    </div>
                                 </div>
+                                
                             ';
                 }
                 ?>
