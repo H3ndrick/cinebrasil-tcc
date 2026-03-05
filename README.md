@@ -62,7 +62,7 @@ MySQL
 ---
 
 🏗️ Estrutura do Projeto (exemplo)
-
+```
 cinebrasil/
 │
 ├── assets/                # Arquivos estáticos do site
@@ -79,7 +79,7 @@ cinebrasil/
 ├── *.php                  # Páginas principais do site
 │
 └── README.md
-
+```
 
 ---
 
