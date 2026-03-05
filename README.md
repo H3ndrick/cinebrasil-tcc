@@ -71,7 +71,7 @@ cinebrasil/
 │   └── js/                # Scripts JavaScript
 │
 ├── inclusas/              # Arquivos PHP reutilizáveis (header, footer, conexões, etc.)
-├── proc/                  # Scripts de processamento (requisições, formulários, lógica do sistema) / está em processo de substituições pelos webservices
+├── proc/                  # Scripts de processamento (requisições, formulários, lógica do sistema) / está em processo de substituição pelos webservices
 ├── scripts/               # Scripts SQL
 ├── uploads/               # Arquivos enviados pelos usuários ou pelo sistema
 ├── ws/                    # Endpoints / serviços web
