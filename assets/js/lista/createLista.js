@@ -1,4 +1,4 @@
-const baseUrl = window.location.origin + '/ws/';
+const baseUrl = window.location.origin + '/src/';
 
 document.getElementById('btnCriarLista').addEventListener('click', (e) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ function createLista(){
     let form = document.getElementById('formCriarLista');
     let formData = new FormData(form);
 
-    fetch(`${baseUrl}lista/wsCreateLista.php`, {
+    fetch(`${baseUrl}api/lista/criar.php`, {
         'method' : 'POST',
         'body' : formData
     }).then(response => {
