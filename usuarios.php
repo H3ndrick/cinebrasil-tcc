@@ -41,7 +41,7 @@
                                 if($usuario["role"] == "user"){
                                     $role = 'usuario';
                                     $tag = 'tag-usuario';
-                                    $gerenciar = '<a href="#" class="" onclick="tornarAdm('.$usuario["id"].')">Tornar ADM</a> <a href="#" class="">Suspender usuario</a>';
+                                    $gerenciar = '<a href="#" class="" onclick="tornarAdm('.$usuario["id"].')">Tornar ADM</a>';
                                 } else{
                                     $role = 'ADM';
                                     $tag = 'tag-adm';

@@ -16,7 +16,6 @@ function getAnalisesFilme(){
         return response.json();
     })
     .then(data => {
-        console.log(data);
         document.getElementById('container-avaliacoes-filme').innerHTML = '';
         qntAvaliacoes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
@@ -51,7 +50,6 @@ function getAnalisesFilme(){
 
                 if(document.getElementById('isAdmInput').value){
                     let idUsuarioLogado = document.getElementById('idUsuarioLogado').value
-                    console.log(idUsuarioLogado);
                     
                     if(idUsuarioLogado != usuario.id){
                         document.getElementById('container-avaliacoes-filme').innerHTML += `
@@ -78,8 +76,6 @@ function getAnalisesFilme(){
                             </div>
                         `;
                     } else{
-                        console.log(analise);
-                        console.log(usuario);
 
                         document.getElementById('container-avaliacoes-filme').innerHTML += `
                             <div class="analise d-flex gap-3" id="avaliacao-${analise.id_filme}-${usuario.id}">
@@ -107,7 +103,6 @@ function getAnalisesFilme(){
                     }
                 } else{
                     let idUsuarioLogado = document.getElementById('idUsuarioLogado').value
-                    console.log(idUsuarioLogado);
                     if(idUsuarioLogado != usuario.id){
                         document.getElementById('container-avaliacoes-filme').innerHTML += `
                             <div class="analise d-flex gap-3" id="avaliacao-${analise.id_filme}-${usuario.id}">
@@ -151,7 +146,6 @@ function getAnalisesFilme(){
                     }
                     
                 }
-                console.log(qntAvaliacoes);
             }
             
             mediaAvaliacoes = mediaAvaliacoes / data.analises.length;
@@ -161,9 +155,9 @@ function getAnalisesFilme(){
             montarGrafico(qntAvaliacoes);
         }
 
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }
 

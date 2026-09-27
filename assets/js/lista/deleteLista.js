@@ -19,8 +19,8 @@ function deleteLista(){
     })
     .then(data => {
         window.location.href = 'listas.php';
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }

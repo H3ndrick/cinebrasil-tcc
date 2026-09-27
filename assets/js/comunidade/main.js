@@ -57,9 +57,9 @@ function upVote(id){
     })
     .then(data => {
         window.location.reload(false);
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }
 
@@ -79,9 +79,9 @@ function downVote(id){
     })
     .then(data => {
         window.location.reload(false);
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }
 
@@ -102,9 +102,9 @@ function reterPost(id){
     .then(data => {
         document.getElementById('post-list').removeChild(document.getElementById(`containerPost-${data.idPost}`));
 
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }
 

@@ -18,14 +18,14 @@ function getPublicacoesRetidas(){
 
         if(!data.success){
             document.getElementById('containerPostsRetidos').innerHTML = '<h3>Não há nenhum post retido.</h3>';
-            return console.log(data);
+            return;
         }
 
         exibirPostsRetidos(data.posts, data.usuarios);
 
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }
 

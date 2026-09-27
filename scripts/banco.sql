@@ -162,6 +162,8 @@ INSERT INTO usuarios (username, email, senha, foto, bio, role) VALUES (
 );
 
 
+
+
 INSERT INTO `filmes`(`titulo`, `dataDeLancamento`, `sinopse`, `capa`, `foto`) VALUES 
 ('Os carrinhos', '2006-06-20', 'Aqueçam seus motores e preparem-se para conhecer Rodópolis, uma cidade onde os carros falam e pensam como gente. Tudo nesse lugar gira em torno da velocidade, e todo mundo só pensa em corridas. Tonny trabalha numa companhia de entregas da cidade e é um dos maiores fãs do automobilismo. Seus dois grandes sonhos são se tornar um corredor profissional e conquistar o coração da sobrinha do patrão.', 'uploads/filmes/capas/os-carrinhos.webp','uploads/filmes/fotos/os-carrinhos.jpg'),
 ('Cidade de Deus','2002-08-30','Baseado em fatos reais, retrata a ascensão do crime organizado na favela Cidade de Deus, no Rio de Janeiro.','uploads/filmes/capas/cidade-de-deus.jpg','uploads/filmes/fotos/cidade-de-deus.jpg'),

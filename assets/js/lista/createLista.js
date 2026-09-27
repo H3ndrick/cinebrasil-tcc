@@ -2,9 +2,7 @@ const baseUrl = window.location.origin + '/ws/';
 
 document.getElementById('btnCriarLista').addEventListener('click', (e) => {
     e.preventDefault();
-    
-    console.log(document.getElementById('titulo').value);
-    console.log(validaTitulo(document.getElementById('titulo').value));
+
     if(validaTitulo(document.getElementById('titulo').value)){
         createLista();
     }
@@ -36,8 +34,8 @@ function createLista(){
     })
     .then(data => {
         window.location.href = `lista.php?id=${data.idLista}`;
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }

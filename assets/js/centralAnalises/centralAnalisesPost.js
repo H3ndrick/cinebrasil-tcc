@@ -13,9 +13,9 @@ function permitirPost(id){
     })
     .then(data => {
         getPublicacoesRetidas();
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }
 
@@ -35,8 +35,8 @@ function deletePost(idPost){
     })
     .then(data => {
         getPublicacoesRetidas(); 
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }

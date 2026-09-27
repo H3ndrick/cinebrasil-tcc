@@ -16,7 +16,6 @@ function tornarAdm(id){
         return response.json();
     })
     .then(data => {
-        console.log(data);
 
         if(data.sucess){
             document.getElementById(`role-usuario-${id}`).innerHTML = `
@@ -25,6 +24,6 @@ function tornarAdm(id){
             document.getElementById(`gerenciar-usuario-${id}`).innerHTML = `<a href="#" class="" onclick="removerAdm(${id})">Remover ADM</a>`;
         }
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }

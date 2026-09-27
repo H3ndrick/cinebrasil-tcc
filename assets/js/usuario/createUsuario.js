@@ -113,8 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (isUsernameValid && isEmailValid && isSenhaValid && isConfirmaSenhaValid && isFotoValid) {
             cadastrar();
-        } else {
-            console.log('Erro na validação.');
         }
     });
 

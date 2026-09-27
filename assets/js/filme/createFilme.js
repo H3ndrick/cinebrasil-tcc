@@ -21,8 +21,8 @@ function cadastrarFilme(idFilme, titulo, dataLancamento, sinopse, capa, banner){
     })
     .then(data => {
         window.location.href = `filme.php?id=${data.idFilme}`;
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }

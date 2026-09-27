@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if (!$post) {
             $response = ['success' => false, 'mensagem' => 'Post não encontrado.'];
-        } elseif ($post["usuario_id"] != $idUser && (!isAdmComunidade($conn, $idComunidade, $idUser) && !$isDono)) {
+        } elseif ($post["usuario_id"] != $idUser && (!isAdmComunidade($conn, $idComunidade, $idUser) && !$isDono && !isAdm($conn, $idUser))) {
             $response = ['success' => false, 'mensagem' => 'Você não tem permissão para excluir este post.'];
         } else {
             $deleteRetido = permitirPostRetido($conn, $idPost);

@@ -15,11 +15,9 @@ function reterAvaliacao(idFilme, idUsuario){
     })
     .then(data => {
         document.getElementById('container-avaliacoes-filme').removeChild(document.getElementById(`avaliacao-${data.idFilme}-${data.idUsuario}`));
-        
-
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return error;
     });
 }
 
@@ -38,9 +36,9 @@ function permitirAvaliacao(idFilme, idUsuario){
     })
     .then(data => {
         getAvaliacoesRetidas();
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }
 
@@ -61,8 +59,8 @@ function excluirAvaliacao(idFilme, idUsuario){
     })
     .then(data => {
         getAvaliacoesRetidas();
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }

@@ -1456,8 +1456,20 @@
         return $result; 
     }
 
+    function deleteVotosPost($conn, $idPost){
+        $command = "DELETE FROM votos_posts WHERE id_post = ?"; 
+
+        $stmt = mysqli_prepare($conn, $command); 
+        mysqli_stmt_bind_param($stmt, "i", $idPost); 
+        $result = mysqli_stmt_execute($stmt); 
+
+        return $result; 
+    }
+
     function deletarPost($conn, $idPost){
         deleteComentariosPost($conn, $idPost); 
+        deleteVotosPost($conn, $idPost);
+        
         $command = "DELETE FROM post WHERE id = ?"; 
 
         $stmt = mysqli_prepare($conn, $command); 

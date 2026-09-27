@@ -9,7 +9,7 @@
     include "includes/header.php";
 ?>
 
-    <div class="container mt-5 p-5">
+    <div class="container mt-5 p-5 tamanho-form">
         <main class="mt-3 d-flex align-items-center justify-content-center main">
             <div class="div-form w-50 p-3 rounded-2">
                 <h3 class="text-center text-white">Login</h3>
@@ -26,7 +26,9 @@
                         <div id="passwordError"></div>
                     </div>
                     <p id="mensagemErro" class="error"></p>
-                    <button class="btn btn-primary" id="btnLogin">Login</button>
+                    
+                        <button class="btn btn-primary" id="btnLogin">Login</button>
+                    
                     <p class="mt-3">Não tem uma conta? <a href="cadastro.php">Cadastrar-se</a></p>
                 </form>
             </div>

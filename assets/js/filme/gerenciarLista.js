@@ -26,7 +26,7 @@ function getListas(){
     .then(data => {
         if(data.listas.length == 0){
             listasContainer.innerHTML = '<p>Você ainda não tem listas criadas.</p>';
-            return console.log(data);
+            return;
         }
         const html = data.listas.map(lista => {
             const checked = lista.filmes.some(filme => filme.id_filme == parseInt(idFilme)) ? 'checked' : '';
@@ -39,9 +39,9 @@ function getListas(){
 
         listasContainer.innerHTML = html;
 
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 
 }
@@ -71,9 +71,9 @@ function createLista(){
         novaListaTitulo.value = '';
         divErroTituloLista.innerText = '';
         getListas();
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }
 
@@ -99,8 +99,8 @@ function salvarAlteracoes(){
     })
     .then(data => {
         bootstrap.Modal.getInstance(modal).hide();
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }

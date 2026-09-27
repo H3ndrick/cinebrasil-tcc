@@ -18,14 +18,14 @@ function getAvaliacoesRetidas(){
 
         if(!data.success){
             document.getElementById('containerAvaliacoesRetidas').innerHTML = '<h3>Não há nenhuma avaliação retida.</h3>';
-            return console.log(data);
+            return;
         }
 
         exibirAvaliacoesRetidas(data.avaliacoes, data.usuarios);
 
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }
 

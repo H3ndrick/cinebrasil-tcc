@@ -11,7 +11,7 @@ include "includes/header.php";
 
 <main class="d-flex align-items-center justify-content-center">
     <div class="container-fluid pt-4 mt-4 container-grid-posters">
-        <div id="filmes-lista" class="d-flex align-items-center justify-content-center gap-3 flex-wrap">
+        <div id="filmes-lista" class="d-flex align-items-center justify-content-center gap-3 flex-wrap mt-3 pt-3">
             
         </div>
         
@@ -50,7 +50,6 @@ include "includes/header.php";
 
         const container = document.getElementById('filmes-lista');
         container.innerHTML = '';
-        console.log(dados);
         if(dados.total_results > 0){
             dados.results.forEach(filme => {
                 const div = document.createElement('div');

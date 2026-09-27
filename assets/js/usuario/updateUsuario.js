@@ -84,10 +84,7 @@ btnEditar.addEventListener('click', (e) => {
     const isFotoValid = validaFoto();
 
     if (isUsernameValid && isBioValid && isFotoValid) {
-        console.log('Validação bem-sucedida.');
         atualizar();
-    } else {
-        console.log('Erro na validação.');
     }
 });
 
@@ -105,13 +102,11 @@ function atualizar(){
         return response.json();
     })
     .then(data => {
-        console.log(data);
         if(data.sucess){
             window.location.href = 'perfil.php';
         } else{
             document.getElementById('erroCadastro').innerText = data.mensagem;
         }
     }).catch(error => {
-        console.log(error);
     });
 }

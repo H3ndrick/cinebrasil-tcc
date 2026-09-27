@@ -13,8 +13,7 @@ function removerAdmComunidade(idComunidade, idUsuario, isDono){
 
         return response.json();
     })
-    .then(data => {
-        console.log(data);
+    .then(data => {;
 
         if(data.sucess){
             document.getElementById(`role-usuario-${idUsuario}`).innerHTML = `
@@ -28,10 +27,9 @@ function removerAdmComunidade(idComunidade, idUsuario, isDono){
             } else{
                 gerenciar += `</div>`;
             }
-            console.log(isDono);
             document.getElementById(`gerenciar-usuario-${idUsuario}`).innerHTML = gerenciar;
         }
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }

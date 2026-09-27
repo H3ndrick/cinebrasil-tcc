@@ -14,12 +14,11 @@ function passarPosse(idComunidade, idUsuario){
         return response.json();
     })
     .then(data => {
-        console.log(data);
 
         if(data.sucess){
-            
+            return data.sucess;
         }
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }

@@ -20,7 +20,6 @@ function atualizar(){
         return response.json();
     })
     .then(data => {
-        console.log(data);
 
         if(data.sucess){
             window.location.href = `lista.php?id=${data.id}`;
@@ -28,6 +27,6 @@ function atualizar(){
             document.getElementById('erroCadastro').innerText = data.mensagem;
         }
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }

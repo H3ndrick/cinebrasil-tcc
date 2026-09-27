@@ -21,7 +21,7 @@ disconnect($conn);
 
 <div class="container mt-5 d-flex flex-column align-items-center">
     <h2 class="text-center mb-4 w-100">Editar Comunidade</h2>
-    <form id="formEditarComunidade" enctype="multipart/form-data" class="d-flex flex-column align-items-center w-100" style="max-width: 500px;">
+    <form id="formEditarComunidade" enctype="multipart/form-data" class="d-flex flex-column align-items-center w-100" style="max-width: 500px; margin: auto;">
         <input type="hidden" name="idComunidade" value="<?= $comunidade['id'] ?>">
 
         <div class="mb-4 w-100">
@@ -56,10 +56,8 @@ disconnect($conn);
             <button type="submit" class="btn btn-primary" id="btnEditarComunidade">Confirmar Edição</button>
             <a href="comunidade.php?id=<?= $comunidade['id'] ?>" class="btn btn-secondary">Cancelar</a>
         </div>
-
-        </div>
             
     </form>
 </div>
-
+        
 <script src="assets/js/comunidade/editarComunidade.js"></script>

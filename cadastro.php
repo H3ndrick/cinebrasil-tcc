@@ -9,7 +9,7 @@
     include "includes/header.php";
 ?>
 
-    <div class="container mt-5 p-2">
+    <div class="container mt-5 p-2 tamanho-form">
         <main class="mt-3 d-flex align-items-center justify-content-center main">
             <div class="div-form w-50 p-3 rounded-2">
                 <h3 class="text-center text-white">Cadastro</h3>

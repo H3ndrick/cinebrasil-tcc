@@ -15,14 +15,14 @@
                 ?>
                         <div class="container-lista">
                             <div class="lista" id="criarLista">
-                                <div class="card-lista d-flex align-items-center justify-content-center" style="background-color:rgb(130, 82, 207);">
+                                <div class="card-lista d-flex align-items-center justify-content-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
                                     </svg>
                                 </div>
-                                <div class="card-lista" style="background-color:rgb(162, 111, 229);"></div>
-                                <div class="card-lista" style="background-color:rgb(188, 156, 206);"></div>
-                                <div class="card-lista" style="background-color:rgb(195, 175, 212);"></div>
+                                <div class="card-lista" ></div>
+                                <div class="card-lista" ></div>
+                                <div class="card-lista" ></div>
                             </div>
                             <div class="div-infos-lista d-flex flex-column px-3 pb-3">
                                 <span class=" w-100 titulo-lista">Criar lista</span>

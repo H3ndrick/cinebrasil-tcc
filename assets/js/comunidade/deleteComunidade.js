@@ -13,8 +13,8 @@ function deleteComunidade(idComunidade){
     })
     .then(data => {
         window.location.href = `comunidades.php`;    
-        return console.log(data);
+        return;
     }).catch(error => {
-        return console.log(error);
+        return;
     });
 }
